@@ -1,3 +1,64 @@
 /* ==========================================================================
    EMSTYLAR — Styles spécifiques à la page À propos (about.html)
+   ==========================================================================
+   Le page-hero, les grilles (.grid, .icon-card) et la timeline utilisent
+   des composants partagés définis dans assets/css/components.css.
+   Seule la carte "Notre atelier" est propre à cette page.
    ========================================================================== */
+
+.atelier-card {
+  max-width: 640px;
+  margin-inline: auto;
+  border-top: var(--border-width-md) solid var(--color-gold);
+}
+
+.atelier-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.atelier-card__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.atelier-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: rgba(201, 162, 75, 0.12);
+  color: var(--color-gold-ink);
+}
+
+.atelier-card__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.atelier-card__label {
+  margin-bottom: 2px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.atelier-card__value {
+  font-size: var(--fs-base);
+}
+
+.atelier-card__value a {
+  color: var(--color-text);
+  transition: color var(--transition-fast);
+}
+
+.atelier-card__value a:hover {
+  color: var(--color-gold-ink);
+}

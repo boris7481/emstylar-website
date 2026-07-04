@@ -1,3 +1,15 @@
 /* ==========================================================================
    EMSTYLAR — Styles spécifiques à la page Services (services.html)
+   ==========================================================================
+   Cette page réutilise uniquement des composants partagés définis dans
+   assets/css/components.css (.page-hero, .icon-card, .split, .timeline,
+   .accordion, .cta-section) : aucun style additionnel n'est nécessaire
+   pour l'instant.
    ========================================================================== */
+
+.service-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  margin-top: var(--space-sm);
+}

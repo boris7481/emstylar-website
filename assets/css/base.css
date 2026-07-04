@@ -78,6 +78,7 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
+summary:focus-visible,
 [tabindex]:focus-visible {
   outline: var(--border-width-md) solid var(--color-focus-ring);
   outline-offset: 2px;

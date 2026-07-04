@@ -218,21 +218,5 @@
   }
 }
 
-/* --------------------------------------------------------------------
-   Section d'appel à l'action (CTA)
-   -------------------------------------------------------------------- */
-.cta-section__inner {
-  max-width: var(--container-narrow);
-  margin-inline: auto;
-  text-align: center;
-}
-
-.cta-section__title {
-  font-size: var(--fs-3xl);
-  color: var(--color-text-inverse);
-}
-
-.cta-section__text {
-  margin-block: var(--space-sm) var(--space-lg);
-  color: var(--gray-300);
-}
+/* Section d'appel à l'action (CTA) : voir assets/css/components.css
+   (.cta-section*), composant partagé par toutes les pages. */

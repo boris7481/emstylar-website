@@ -25,14 +25,17 @@
 - [x] **Gallery**
   - [x] Filtres par catégorie
   - [x] Lightbox accessible (clavier, `aria-modal`)
+- [x] **Videos**
+  - [x] Hero avec breadcrumb, titre, sous-titre et image de couverture
+  - [x] Grille responsive de cartes vidéo (vidéo, poster, titre, description, catégorie, durée)
+  - [x] Lecteur HTML5 natif (contrôles natifs, `controlsList="nodownload"`, `preload="metadata"`)
+  - [x] Boutons "Demander cette création" et WhatsApp (message pré-rempli) sous chaque vidéo
+  - [x] Accessibilité (navigation clavier, ARIA labels, hiérarchie de titres, contrastes)
+  - [x] Responsive desktop / tablette / mobile
+  - [x] Vérification console et régression sur les autres pages
 
 ## Milestones restants
 
-- [ ] **Videos**
-  - [ ] Structure de la galerie vidéos
-  - [ ] Intégration des vidéos optimisées
-  - [ ] Lecteur vidéo accessible
-  - [ ] Filtres si nécessaire
 - [ ] **Contact**
   - [ ] Mise en page complète de la page Contact
   - [ ] Intégration du formulaire de contact

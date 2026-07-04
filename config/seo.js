@@ -33,8 +33,9 @@ export const seo = {
     // Placeholder — compte Twitter/X à confirmer.
     site: "#",
   },
-  // Placeholder — nom de domaine non encore confirmé.
-  canonicalBase: "#",
+  // Placeholder — nom de domaine non encore confirmé (utilisé pour le canonical,
+  // sitemap.xml et robots.txt en attendant la confirmation du domaine réel).
+  canonicalBase: "https://www.emstylar.com",
 };
 
 export default seo;

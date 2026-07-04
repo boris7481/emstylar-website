@@ -9,10 +9,30 @@ Le format s'inspire de [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 ### À venir
 
 - WhatsApp + Google Maps + Formulaire (intégration réelle Google Maps et Formspree — architecture déjà en place dans `config/`)
-- SEO
+- Nom de domaine réel (remplacement du placeholder `https://www.emstylar.com`)
 - Performance
 - Optimisation des médias
 - Déploiement
+
+## [0.5.0] — 2026-07-04
+
+### Ajouté
+
+- **Documentation de développement** : `DEVELOPMENT.md` (présentation du projet, prérequis, structure, lancement via Live Server/Python/npx serve, explication de la restriction `file:///` sur les modules ES6, fonctionnement de `config/`, procédures de test/commit/push/Milestone).
+- **Scripts de développement** : `scripts/start-server.bat` et `scripts/start-server.ps1`, qui lancent `python -m http.server 8000` et rappellent l'URL locale.
+- **Préparation GitHub Pages** : fichier `.nojekyll` à la racine, pour désactiver le traitement Jekyll par défaut.
+- **SEO professionnel** sur les 6 pages (`index.html`, `about.html`, `services.html`, `gallery.html`, `videos.html`, `contact.html`) :
+  - Title et meta description uniques, optimisés et remplaçant les placeholders "Description à venir".
+  - Meta keywords, author, language, robots (`index, follow`), theme-color.
+  - `<link rel="canonical">` et favicon (logo existant, non modifié, utilisé en placeholder).
+  - Balises Open Graph (title, description, type, image placeholder, url, site_name, locale) et Twitter Cards (card, title, description, image placeholder).
+  - Données structurées JSON-LD `LocalBusiness` (nom, slogan, téléphone, adresse, ville, quartier, pays, horaires, url), identiques sur les 6 pages et alimentées par les valeurs de `config/`.
+- **`sitemap.xml`** listant les 6 pages (domaine placeholder `https://www.emstylar.com`) et **`robots.txt`** autorisant l'indexation et référençant le sitemap.
+
+### Modifié
+
+- `config/seo.js` : `canonicalBase` renseigné avec le domaine placeholder `https://www.emstylar.com` (remplaçait `#`).
+- `config/site.js` : version passée à `v0.5.0`.
 
 ## [0.4.0] — 2026-07-04
 

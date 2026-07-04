@@ -59,6 +59,21 @@
   - [x] Carte de localisation reliée à `config/maps.js` et `config/company.js`
   - [x] Design, animations, galerie, vidéos, homepage et composants non modifiés
   - [x] Tests desktop/tablette/mobile, console, régression
+- [x] **SEO Professionnel & Préparation au Déploiement**
+  - [x] `DEVELOPMENT.md` : présentation, prérequis, structure, lancement (Live Server / Python / npx serve), pourquoi `file:///` ne fonctionne pas, modules ES6, dossier `config/`, tests, procédures commit/push/Milestone
+  - [x] `scripts/start-server.bat` et `scripts/start-server.ps1`
+  - [x] `.nojekyll` pour la compatibilité GitHub Pages
+  - [x] Title, meta description et meta keywords uniques et optimisés sur les 6 pages
+  - [x] Meta author, language, robots, theme-color sur les 6 pages
+  - [x] `<link rel="canonical">` sur les 6 pages
+  - [x] Favicon (logo existant utilisé en placeholder, non modifié)
+  - [x] Balises Open Graph (title, description, type, image placeholder, url, site_name, locale)
+  - [x] Twitter Cards (card, title, description, image placeholder)
+  - [x] Données structurées JSON-LD `LocalBusiness` (nom, slogan, téléphone, adresse, ville, quartier, pays, horaires, url) sur les 6 pages
+  - [x] `sitemap.xml` (6 pages, domaine placeholder) et `robots.txt` (indexation autorisée, sitemap référencé)
+  - [x] Vérification : un seul H1 par page, hiérarchie H2/H3 sans saut de niveau, alt des images, aria-label, liens descriptifs, `loading="lazy"`, dimensions des images, `preload`/`fetchpriority` uniquement sur les héros
+  - [x] Design, animations, composants et contenus métier non modifiés
+  - [x] Tests desktop/tablette/mobile, console, régression, Live Server/`python -m http.server`/GitHub Pages (compatibilité théorique)
 
 ## Milestones restants
 
@@ -66,11 +81,7 @@
   - [x] Lien WhatsApp finalisé (numéro, message pré-rempli, centralisé dans `config/contact.js`)
   - [ ] Intégration Google Maps réelle (actuellement carte illustrée + lien `#` piloté par `config/maps.js`)
   - [ ] Endpoint du formulaire de contact configuré (Formspree réel — actuellement URL placeholder dans `config/form.js`)
-- [ ] **SEO**
-  - [ ] Balises meta (title, description) par page
-  - [ ] Open Graph / Twitter Cards
-  - [ ] Données structurées (schema.org)
-  - [ ] sitemap.xml et robots.txt
+  - [ ] Nom de domaine réel (remplacer le placeholder `https://www.emstylar.com` partout : canonical, Open Graph, sitemap.xml, robots.txt, JSON-LD, `config/seo.js`)
 - [ ] **Performance**
   - [ ] Audit Lighthouse (Performance > 90)
   - [ ] Réduction du poids des pages

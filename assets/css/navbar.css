@@ -29,6 +29,12 @@
   box-shadow: var(--shadow-sm);
 }
 
+/* Note : le header est en position sticky (il réserve sa place dans le
+   flux) et ne recouvre donc jamais le hero — il repose toujours sur le
+   fond de page (--color-bg), hero ou non. Les couleurs de texte par
+   défaut (sombres) restent donc valables sur toutes les pages, y
+   compris l'accueil. */
+
 .site-header__inner {
   display: flex;
   align-items: center;

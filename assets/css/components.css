@@ -80,6 +80,22 @@
   transform: none;
 }
 
+/* Contour clair — pour un bouton "outline" posé sur fond sombre (ex. hero).
+   Un léger flou d'arrière-plan garantit la lisibilité même si l'image
+   derrière le bouton n'est pas parfaitement sombre à cet endroit. */
+.btn--on-dark {
+  border-color: var(--color-white);
+  color: var(--color-white);
+  background-color: rgba(10, 10, 10, 0.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.btn--on-dark:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
 /* --------------------------------------------------------------------
    2. Cartes
    -------------------------------------------------------------------- */
@@ -498,4 +514,32 @@
 .breadcrumbs__item[aria-current="page"] {
   color: var(--color-text);
   font-weight: var(--fw-medium);
+}
+
+/* --------------------------------------------------------------------
+   12. Séparateur de section (divider)
+   Trait discret avec un accent doré centré, posé entre deux sections
+   pour ponctuer la lecture sans ajouter de bordure dure.
+   -------------------------------------------------------------------- */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-image: linear-gradient(to right, transparent, var(--color-border-strong), transparent);
+}
+
+.divider__icon {
+  flex-shrink: 0;
+  font-size: var(--fs-sm);
+  color: var(--color-gold);
 }

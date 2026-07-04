@@ -37,3 +37,24 @@ export function initScrollHeader(header, threshold = 24) {
     header.classList.toggle("site-header--scrolled", y > threshold);
   });
 }
+
+/**
+ * Léger effet de parallaxe sur le hero : le conteneur média se déplace un
+ * peu plus lentement que le scroll, tant qu'il est visible à l'écran.
+ * Appliqué à .hero__media (et non à l'image elle-même, qui porte déjà
+ * sa propre animation de zoom "Ken Burns" en CSS). Désactivé pour
+ * prefers-reduced-motion.
+ */
+export function initHeroParallax(heroMedia) {
+  if (!heroMedia) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const hero = heroMedia.closest(".hero");
+  if (!hero) return;
+
+  onScroll((y) => {
+    if (y > hero.offsetHeight) return;
+    const offset = Math.min(y * 0.12, 24);
+    heroMedia.style.transform = `translateY(${offset}px)`;
+  });
+}

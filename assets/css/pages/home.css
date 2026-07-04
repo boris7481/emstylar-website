@@ -1,3 +1,238 @@
 /* ==========================================================================
    EMSTYLAR — Styles spécifiques à la page Accueil (index.html)
+   ==========================================================================
+   Hero, section "Nos engagements", section "Pourquoi choisir EMSTYLAR"
+   et section d'appel à l'action. Mobile-first.
    ========================================================================== */
+
+/* --------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 90svh;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero__media {
+  position: absolute;
+  top: -4%;
+  right: 0;
+  left: 0;
+  height: 108%;
+  z-index: -2;
+  /* Marge verticale volontaire : assets/js/modules/scroll.js translate
+     légèrement ce conteneur au scroll (parallaxe). La hauteur excédentaire
+     évite qu'un espace vide apparaisse en haut du hero pendant l'effet. */
+}
+
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  /* Léger mouvement autonome de l'image ("Ken Burns"), neutralisé
+     automatiquement pour prefers-reduced-motion (voir reset.css). */
+  animation: hero-image-drift 22s var(--ease-in-out) infinite alternate;
+}
+
+@keyframes hero-image-drift {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* Double dégradé : assombrit le haut (lisibilité du header) et surtout
+     le bas de l'image (lisibilité du texte + masque les éventuels
+     filigranes des photos sources utilisées en placeholder). */
+  background-image: linear-gradient(
+      180deg,
+      rgba(10, 10, 10, 0.55) 0%,
+      rgba(10, 10, 10, 0.3) 30%,
+      rgba(10, 10, 10, 0.88) 100%
+    ),
+    radial-gradient(ellipse at bottom right, rgba(10, 10, 10, 0.7) 0%, rgba(10, 10, 10, 0) 55%);
+}
+
+.hero__content {
+  position: relative;
+  padding-block: var(--space-2xl) var(--space-xl);
+  color: var(--color-white);
+}
+
+.hero__badge {
+  margin-bottom: var(--space-sm);
+}
+
+.hero__title {
+  font-size: var(--fs-5xl);
+  color: var(--color-white);
+  line-height: var(--lh-tight);
+}
+
+.hero__slogan {
+  margin-top: var(--space-2xs);
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: var(--fs-xl);
+  color: var(--color-gold);
+}
+
+.hero__intro {
+  max-width: 42ch;
+  margin-top: var(--space-md);
+  font-size: var(--fs-md);
+  color: var(--gray-200);
+  line-height: var(--lh-relaxed);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.hero__scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-md);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 26px;
+  height: 42px;
+  padding-top: var(--space-2xs);
+  border: var(--border-width-sm) solid rgba(248, 245, 240, 0.6);
+  border-radius: var(--radius-full);
+}
+
+.hero__scroll-cue-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-white);
+  animation: hero-scroll-cue 1.8s var(--ease-in-out) infinite;
+}
+
+@keyframes hero-scroll-cue {
+  0% { opacity: 1; transform: translateY(0); }
+  70% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 0; transform: translateY(14px); }
+}
+
+@media (min-width: 768px) {
+  .hero__title {
+    font-size: clamp(3.5rem, 3rem + 3vw, 6rem);
+  }
+}
+
+/* --------------------------------------------------------------------
+   Nos engagements — cartes
+   -------------------------------------------------------------------- */
+.engagement-card {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.engagement-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--space-sm);
+  border-radius: var(--radius-full);
+  background-color: rgba(201, 162, 75, 0.12);
+  color: var(--color-gold-ink);
+}
+
+.engagement-card__icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* --------------------------------------------------------------------
+   Pourquoi choisir EMSTYLAR — texte à gauche, image à droite
+   -------------------------------------------------------------------- */
+.why-us {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.why-us__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  margin-block: var(--space-md);
+  padding-left: var(--space-md);
+}
+
+.why-us__list li {
+  position: relative;
+  color: var(--color-text-muted);
+}
+
+.why-us__list li::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--space-md));
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-gold);
+}
+
+.why-us__media {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.why-us__image {
+  width: 100%;
+  height: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 992px) {
+  .why-us {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .why-us__media {
+    order: 2;
+  }
+}
+
+/* --------------------------------------------------------------------
+   Section d'appel à l'action (CTA)
+   -------------------------------------------------------------------- */
+.cta-section__inner {
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.cta-section__title {
+  font-size: var(--fs-3xl);
+  color: var(--color-text-inverse);
+}
+
+.cta-section__text {
+  margin-block: var(--space-sm) var(--space-lg);
+  color: var(--gray-300);
+}

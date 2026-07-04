@@ -1,3 +1,259 @@
 /* ==========================================================================
    EMSTYLAR — Styles spécifiques à la page Galerie (gallery.html)
+   ==========================================================================
+   Filtres, grille de cartes et lightbox. Le page-hero, les sections et
+   séparateurs réutilisent les composants partagés de components.css.
    ========================================================================== */
+
+/* --------------------------------------------------------------------
+   Barre de filtres
+   -------------------------------------------------------------------- */
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2xs);
+  margin-bottom: var(--space-lg);
+}
+
+.gallery-filters__btn {
+  padding: var(--space-2xs) var(--space-md);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+  background-color: transparent;
+  border: var(--border-width-sm) solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.gallery-filters__btn:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold-ink);
+}
+
+.gallery-filters__btn.is-active {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-white);
+}
+
+/* --------------------------------------------------------------------
+   Grille (réutilise .grid--auto de layout.css) + cartes
+   -------------------------------------------------------------------- */
+.gallery-grid {
+  list-style: none;
+}
+
+.gallery-grid__item {
+  aspect-ratio: 3 / 4;
+}
+
+.gallery-grid__item[hidden] {
+  display: none;
+}
+
+.gallery-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.gallery-card:hover img,
+.gallery-card:focus-visible img {
+  transform: scale(1.07);
+}
+
+.gallery-card__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2px;
+  padding: var(--space-sm);
+  background-image: linear-gradient(180deg, rgba(10, 10, 10, 0) 55%, rgba(10, 10, 10, 0.82) 100%);
+  text-align: left;
+  color: var(--color-white);
+  opacity: 0.92;
+  transition: opacity var(--transition-base);
+}
+
+.gallery-card:hover .gallery-card__overlay,
+.gallery-card:focus-visible .gallery-card__overlay {
+  opacity: 1;
+}
+
+.gallery-card__category {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.gallery-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-md);
+}
+
+/* --------------------------------------------------------------------
+   État vide (catégorie sans réalisation pour l'instant)
+   -------------------------------------------------------------------- */
+.gallery-empty {
+  padding: var(--space-xl) var(--space-md);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.gallery-empty[hidden] {
+  display: none;
+}
+
+/* --------------------------------------------------------------------
+   Lightbox
+   -------------------------------------------------------------------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+/* Verrouille le scroll de la page pendant que la lightbox est ouverte */
+.has-lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(10, 10, 10, 0.92);
+}
+
+.lightbox__figure {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: min(90vw, 900px);
+  margin: 0;
+  animation: lightbox-in var(--duration-slow) var(--ease-out);
+}
+
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.lightbox__image {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.lightbox__caption {
+  margin-top: var(--space-sm);
+  text-align: center;
+  color: var(--color-white);
+}
+
+.lightbox__category {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.lightbox__title {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+}
+
+.lightbox__close,
+.lightbox__nav {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: rgba(248, 245, 240, 0.1);
+  color: var(--color-white);
+  border: var(--border-width-sm) solid rgba(248, 245, 240, 0.3);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.lightbox__close:hover,
+.lightbox__nav:hover {
+  background-color: rgba(248, 245, 240, 0.2);
+}
+
+.lightbox__close {
+  top: var(--space-md);
+  right: var(--space-md);
+  font-size: var(--fs-xl);
+}
+
+.lightbox__nav {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--fs-2xl);
+}
+
+.lightbox__nav--prev {
+  left: var(--space-sm);
+}
+
+.lightbox__nav--next {
+  right: var(--space-sm);
+}
+
+@media (min-width: 768px) {
+  .lightbox__nav--prev {
+    left: var(--space-lg);
+  }
+
+  .lightbox__nav--next {
+    right: var(--space-lg);
+  }
+}

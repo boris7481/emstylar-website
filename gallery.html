@@ -78,7 +78,270 @@
   <div id="nav-backdrop" class="nav-backdrop"></div>
 
   <main id="main-content">
-    <!-- Contenu de la page Galerie — Milestone 1 -->
+    <!-- ================= HERO GALERIE ================= -->
+    <section class="page-hero" aria-label="Présentation de la page Galerie">
+      <div class="page-hero__media">
+        <img
+          class="page-hero__image"
+          src="fotos/WhatsApp Image 2026-07-03 at 21.27.08 (4).jpeg"
+          alt="Création EMSTYLAR en wax, épaules dénudées, réalisée à l'atelier de Nkolbisson"
+          width="720"
+          height="1280"
+          fetchpriority="high"
+        />
+        <div class="page-hero__overlay" aria-hidden="true"></div>
+      </div>
+
+      <div class="container page-hero__content">
+        <nav class="breadcrumbs" aria-label="Fil d'Ariane">
+          <span class="breadcrumbs__item"><a href="index.html">Accueil</a></span>
+          <span class="breadcrumbs__item" aria-current="page">Galerie</span>
+        </nav>
+        <h1 class="page-hero__title">Notre galerie</h1>
+        <p class="page-hero__subtitle">
+          Un aperçu de nos réalisations : robes, tenues traditionnelles, pièces sur mesure et bien plus,
+          toutes conçues à l'atelier EMSTYLAR.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider" role="presentation">
+      <span class="divider__icon" aria-hidden="true">✦</span>
+    </div>
+
+    <!-- ================= GALERIE FILTRABLE ================= -->
+    <section class="section" aria-labelledby="gallery-title">
+      <div class="container">
+        <header class="section__header" data-reveal>
+          <span class="eyebrow">Réalisations</span>
+          <h2 class="section-title" id="gallery-title">Nos créations en images</h2>
+          <p class="section-subtitle">
+            Filtrez par catégorie pour explorer nos créations.
+          </p>
+        </header>
+
+        <div class="gallery-filters" role="group" aria-label="Filtrer la galerie par catégorie" data-reveal>
+          <button type="button" class="gallery-filters__btn is-active" data-filter="all" aria-pressed="true">Toutes</button>
+          <button type="button" class="gallery-filters__btn" data-filter="femmes" aria-pressed="false">Femmes</button>
+          <button type="button" class="gallery-filters__btn" data-filter="robes" aria-pressed="false">Robes</button>
+          <button type="button" class="gallery-filters__btn" data-filter="mariage" aria-pressed="false">Mariage</button>
+          <button type="button" class="gallery-filters__btn" data-filter="hommes" aria-pressed="false">Hommes</button>
+          <button type="button" class="gallery-filters__btn" data-filter="traditionnel" aria-pressed="false">Traditionnel</button>
+          <button type="button" class="gallery-filters__btn" data-filter="uniformes" aria-pressed="false">Uniformes</button>
+          <button type="button" class="gallery-filters__btn" data-filter="formation" aria-pressed="false">Formation</button>
+        </div>
+
+        <ul class="gallery-grid grid--auto" data-gallery-grid data-reveal>
+          <li class="gallery-grid__item" data-category="femmes robes">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Bustier dentelle et wax (Robes)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.27.08.jpeg" alt="Bustier dentelle et wax" width="720" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Robes</span>
+                <span class="gallery-card__title">Bustier dentelle et wax</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="femmes robes">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Robe fleurie plissée (Robes)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.27.08 (1).jpeg" alt="Robe fleurie plissée" width="720" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Robes</span>
+                <span class="gallery-card__title">Robe fleurie plissée</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="femmes traditionnel">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Ensemble wax étoilé (Traditionnel)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.27.08 (2).jpeg" alt="Ensemble wax étoilé" width="720" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Traditionnel</span>
+                <span class="gallery-card__title">Ensemble wax étoilé</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="femmes robes">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Robe perlée rose (Robes)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.27.08 (3).jpeg" alt="Robe perlée rose" width="720" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Robes</span>
+                <span class="gallery-card__title">Robe perlée rose</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="femmes traditionnel">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Robe wax épaules dénudées (Traditionnel)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.27.08 (4).jpeg" alt="Robe wax épaules dénudées" width="720" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Traditionnel</span>
+                <span class="gallery-card__title">Robe wax épaules dénudées</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="femmes traditionnel">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Robe col graphique (Traditionnel)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.27.08 (5).jpeg" alt="Robe col graphique" width="720" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Traditionnel</span>
+                <span class="gallery-card__title">Robe col graphique</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="femmes mariage">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Robe longue dentelle (Mariage)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.27.08 (7).jpeg" alt="Robe longue dentelle" width="720" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Mariage</span>
+                <span class="gallery-card__title">Robe longue dentelle</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="femmes traditionnel">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Haut wax rouge et blanc (Traditionnel)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.27.08 (8).jpeg" alt="Haut wax rouge et blanc" width="720" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Traditionnel</span>
+                <span class="gallery-card__title">Haut wax rouge et blanc</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="femmes robes">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Robe pompons dorés (Robes)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.27.09.jpeg" alt="Robe pompons dorés" width="720" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Robes</span>
+                <span class="gallery-card__title">Robe pompons dorés</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="femmes traditionnel">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Ensemble wax ceinturé (Traditionnel)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.27.09 (1).jpeg" alt="Ensemble wax ceinturé" width="720" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Traditionnel</span>
+                <span class="gallery-card__title">Ensemble wax ceinturé</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="femmes traditionnel">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Robe graphique, vue de dos (Traditionnel)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.27.09 (2).jpeg" alt="Robe graphique, vue de dos" width="719" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Traditionnel</span>
+                <span class="gallery-card__title">Robe graphique, vue de dos</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="formation">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Finitions en atelier (Formation)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.27.09 (3).jpeg" alt="Finitions en atelier" width="719" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Formation</span>
+                <span class="gallery-card__title">Finitions en atelier</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="femmes robes">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Robe plumes wax (Robes)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.27.09 (4).jpeg" alt="Robe plumes wax" width="720" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Robes</span>
+                <span class="gallery-card__title">Robe plumes wax</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="femmes robes">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Robe fleurie rose et bordeaux (Robes)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.27.09 (5).jpeg" alt="Robe fleurie rose et bordeaux" width="720" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Robes</span>
+                <span class="gallery-card__title">Robe fleurie rose et bordeaux</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="femmes robes">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Robe plumes wax, détail (Robes)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.27.09 (6).jpeg" alt="Robe plumes wax, détail" width="720" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Robes</span>
+                <span class="gallery-card__title">Robe plumes wax, détail</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="femmes traditionnel">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Jupe wax graphique (Traditionnel)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.27.09 (7).jpeg" alt="Jupe wax graphique" width="720" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Traditionnel</span>
+                <span class="gallery-card__title">Jupe wax graphique</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="femmes traditionnel">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Ensemble boubou émeraude (Traditionnel)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.40.06.jpeg" alt="Ensemble boubou émeraude" width="960" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Traditionnel</span>
+                <span class="gallery-card__title">Ensemble boubou émeraude</span>
+              </span>
+            </button>
+          </li>
+
+          <li class="gallery-grid__item" data-category="femmes mariage">
+            <button type="button" class="gallery-card" aria-label="Agrandir la photo : Robe sirène fleurie (Mariage)">
+              <img src="fotos/WhatsApp Image 2026-07-03 at 21.40.06 (3).jpeg" alt="Robe sirène fleurie" width="960" height="1280" loading="lazy" />
+              <span class="gallery-card__overlay" aria-hidden="true">
+                <span class="gallery-card__category">Mariage</span>
+                <span class="gallery-card__title">Robe sirène fleurie</span>
+              </span>
+            </button>
+          </li>
+        </ul>
+
+        <p class="gallery-empty" data-gallery-empty hidden>
+          De nouvelles réalisations arrivent bientôt dans cette catégorie. N'hésitez pas à nous
+          contacter pour découvrir nos travaux en cours.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= LIGHTBOX ================= -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visionneuse de la galerie" hidden>
+      <div class="lightbox__backdrop" data-lightbox-close></div>
+
+      <button type="button" class="lightbox__close" data-lightbox-close aria-label="Fermer la visionneuse">
+        ×
+      </button>
+      <button type="button" class="lightbox__nav lightbox__nav--prev" data-lightbox-prev aria-label="Image précédente">
+        ‹
+      </button>
+      <button type="button" class="lightbox__nav lightbox__nav--next" data-lightbox-next aria-label="Image suivante">
+        ›
+      </button>
+
+      <figure class="lightbox__figure">
+        <img class="lightbox__image" id="lightbox-image" src="" alt="" />
+        <figcaption class="lightbox__caption">
+          <span class="lightbox__category" id="lightbox-category"></span>
+          <span class="lightbox__title" id="lightbox-title"></span>
+        </figcaption>
+      </figure>
+    </div>
   </main>
 
   <footer id="site-footer" class="site-footer">

@@ -74,6 +74,17 @@
   - [x] Vérification : un seul H1 par page, hiérarchie H2/H3 sans saut de niveau, alt des images, aria-label, liens descriptifs, `loading="lazy"`, dimensions des images, `preload`/`fetchpriority` uniquement sur les héros
   - [x] Design, animations, composants et contenus métier non modifiés
   - [x] Tests desktop/tablette/mobile, console, régression, Live Server/`python -m http.server`/GitHub Pages (compatibilité théorique)
+- [x] **Performance & Optimisation**
+  - [x] Audit Performance (HTML, CSS, JS, images, vidéos, chargement) sans aucune modification préalable
+  - [x] `assets/optimized/img/` : WebP + JPEG optimisé, tailles `-lg` (pleine résolution) et `-sm` (~640px), pour les 20 photos et le logo (`fotos/`, `logo/` jamais modifiés)
+  - [x] `assets/optimized/video/` : 5 vidéos réencodées (H.264, CRF 26-28, `faststart`), qualité vérifiée visuellement à l'identique (`videos/`, `assets/video/` jamais modifiés)
+  - [x] Les 6 pages utilisent désormais les copies optimisées (`<picture>`/`<source type="image/webp">`, posters vidéo, logo, favicon)
+  - [x] Lightbox de la galerie : correction pour afficher l'image en pleine résolution (`-lg`) plutôt que la vignette compressée (`-sm`)
+  - [x] Audit du code : aucun `console.log`/`debugger` résiduel, aucune duplication CSS/JS significative détectée, imports ES6 tous justifiés
+  - [x] Vérification `loading="lazy"`, `preload`, `fetchpriority`, poster vidéo, dimensions des images (déjà conformes, confirmés après optimisation)
+  - [x] `netlify.toml` et `vercel.json` : préparation du cache navigateur (médias/CSS/JS longue durée, HTML toujours revalidé) — aucun backend ajouté
+  - [x] Design, animations et composants non modifiés ; aucun média original modifié ou supprimé
+  - [x] Tests desktop/tablette/mobile, console, régression sur les 6 pages
 
 ## Milestones restants
 
@@ -82,14 +93,7 @@
   - [ ] Intégration Google Maps réelle (actuellement carte illustrée + lien `#` piloté par `config/maps.js`)
   - [ ] Endpoint du formulaire de contact configuré (Formspree réel — actuellement URL placeholder dans `config/form.js`)
   - [ ] Nom de domaine réel (remplacer le placeholder `https://www.emstylar.com` partout : canonical, Open Graph, sitemap.xml, robots.txt, JSON-LD, `config/seo.js`)
-- [ ] **Performance**
-  - [ ] Audit Lighthouse (Performance > 90)
-  - [ ] Réduction du poids des pages
-  - [ ] Lazy loading des médias
-- [ ] **Optimisation des médias**
-  - [ ] Compression et redimensionnement des photos (`fotos/` → `assets/img/`)
-  - [ ] Compression des vidéos (`videos/` → `assets/video/`)
-  - [ ] Déclinaisons du logo (`logo/` → `assets/img/logo/`)
+  - [ ] Image Open Graph / Twitter Card réelle (actuellement `content="#"`)
 - [ ] **Déploiement**
   - [ ] Choix de l'hébergement
   - [ ] Configuration du nom de domaine

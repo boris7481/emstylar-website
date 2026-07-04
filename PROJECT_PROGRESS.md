@@ -28,22 +28,25 @@ Emystylar/
 │   ├── css/                variables, reset, base, layout, components, pages/*
 │   ├── js/                  main.js + modules ES6 (navbar, gallery, contact-form,
 │   │                        config-bindings, etc.)
-│   ├── img/                  médias optimisés (à venir)
-│   └── video/                vidéos utilisées sur le site
-├── fotos/                    photos sources (non modifiées)
-├── logo/                     logo source (non modifié)
-├── videos/                   vidéos sources (non modifiées)
+│   ├── video/                vidéos sources utilisées historiquement (non optimisées)
+│   └── optimized/            Copies optimisées utilisées par le site
+│       ├── img/                WebP + JPEG optimisé, tailles -lg/-sm, par photo + logo
+│       └── video/               Vidéos réencodées (H.264/CRF, faststart)
+├── fotos/                    photos sources (jamais modifiées)
+├── logo/                     logo source (jamais modifié)
+├── videos/                   vidéos sources (jamais modifiées)
 ├── scripts/                  start-server.bat / start-server.ps1 (lancement du serveur local)
 ├── sitemap.xml, robots.txt, .nojekyll   Préparation SEO et hébergement (GitHub Pages)
+├── netlify.toml, vercel.json   Cache navigateur (Netlify / Vercel)
 ├── README.md
 ├── DEVELOPMENT.md            Guide de développement (lancement, tests, procédures Git)
 └── .gitignore
 ```
 
-- **Version actuelle :** v0.5.0
+- **Version actuelle :** v0.6.0
 - **Date de création du projet :** 2026-07-02
 - **Dernière mise à jour de ce document :** 2026-07-04
-- **Dernier commit :** `3e223be` — refactor(config): centralize project configuration and prepare production settings *(placeholder — à mettre à jour à chaque fin de Milestone)*
+- **Dernier commit :** `be5a143` — feat(seo): complete professional SEO setup and deployment preparation *(placeholder — à mettre à jour à chaque fin de Milestone)*
 - **Hébergement prévu :** à définir *(placeholder)*
 - **Nom de domaine :** à définir *(placeholder)*
 
@@ -63,8 +66,7 @@ Emystylar/
 | Intégrations & Configuration Centralisée | ✅ Terminé |
 | WhatsApp + Google Maps + Formulaire (intégrations réelles) | ⬜ Restant *(architecture prête dans `config/` ; il ne reste qu'à renseigner l'endpoint Formspree réel et la carte Google Maps réelle)* |
 | SEO Professionnel & Préparation au Déploiement | ✅ Terminé |
-| Performance | ⬜ Restant |
-| Optimisation des médias | ⬜ Restant |
+| Performance & Optimisation | ✅ Terminé |
 | Déploiement | ⬜ Restant |
 
 ## Fonctionnalités déjà disponibles
@@ -82,15 +84,16 @@ Emystylar/
 - Module `config-bindings.js` : lie automatiquement les valeurs de `config/` au HTML (attributs `data-config-text`, `data-config-attr`, `data-whatsapp-message`), sur les 6 pages du site — un futur changement de téléphone, WhatsApp, adresse, slogan ou horaires ne nécessite plus qu'une seule modification dans `config/`.
 - SEO professionnel complet sur les 6 pages : title et meta description uniques et optimisés, meta keywords/author/language/robots/theme-color, `<link rel="canonical">`, favicon (logo existant en placeholder), balises Open Graph et Twitter Cards, données structurées JSON-LD `LocalBusiness` (nom, slogan, téléphone, adresse, horaires), `sitemap.xml` (6 pages) et `robots.txt` (indexation autorisée, sitemap référencé).
 - Préparation au déploiement : `.nojekyll` (compatibilité GitHub Pages), `DEVELOPMENT.md` (guide de développement complet) et `scripts/start-server.bat` / `scripts/start-server.ps1` (lancement rapide du serveur local).
+- Optimisation des médias : `assets/optimized/img/` (WebP + JPEG optimisé, tailles `-lg`/`-sm`, pour les 20 photos et le logo) et `assets/optimized/video/` (5 vidéos réencodées H.264/CRF avec `faststart`), utilisés par les 6 pages via `<picture>`/`<source type="image/webp">` — les originaux (`fotos/`, `logo/`, `videos/`, `assets/video/`) restent strictement intacts.
+- Lightbox de la galerie : affiche désormais l'image en pleine résolution (`-lg`) via `data-full` sur chaque vignette, pour éviter tout flou malgré l'usage de miniatures compressées (`-sm`) dans la grille.
+- Préparation cache/CDN : `netlify.toml` et `vercel.json` (cache long pour les médias/CSS/JS, revalidation systématique des pages HTML) — sans backend, ignorés sans risque par GitHub Pages.
 
 ## Fonctionnalités restantes
 
 - Intégration de la carte Google Maps réelle (actuellement carte illustrée + bouton placeholder piloté par `config/maps.js`).
 - Connexion réelle du formulaire à Formspree (actuellement URL placeholder `config/form.js` → `https://formspree.io/f/xxxxxxxx`).
 - Remplacement du domaine placeholder `https://www.emstylar.com` (canonical, Open Graph, sitemap.xml, robots.txt, JSON-LD) une fois le nom de domaine réel confirmé.
-- Image Open Graph / Twitter Card réelle (actuellement `content="#"` en placeholder) — à produire lors du Milestone Optimisation des médias.
-- Optimisation des performances (Lighthouse > 90).
-- Optimisation des médias (compression et redimensionnement des photos/vidéos sources vers `assets/img/` et `assets/video/`).
+- Image Open Graph / Twitter Card réelle (actuellement `content="#"` en placeholder) — prévue lors de l'optimisation finale des médias, à la charge de l'utilisateur.
 - Déploiement en production (hébergement + nom de domaine à définir).
 
 ## Décisions importantes prises durant le projet
@@ -109,6 +112,9 @@ Emystylar/
 - `config/seo.js` est volontairement **non** injecté dans le `<head>` par JavaScript : les balises meta/Open Graph doivent rester statiques dans le HTML pour être lisibles par les robots d'indexation et les aperçus de liens (Facebook, WhatsApp...), qui n'exécutent pas toujours le JavaScript. Les valeurs des balises `<head>` de chaque page sont donc écrites en dur, mais restent cohérentes avec `config/seo.js`, `config/company.js` et `config/contact.js` : en cas de changement, mettre à jour ces deux endroits.
 - Le domaine `https://www.emstylar.com` (canonical, Open Graph, sitemap.xml, robots.txt, JSON-LD, `config/seo.js`) est un **placeholder** : à remplacer partout par le nom de domaine réel une fois confirmé.
 - `.nojekyll` est un fichier vide à la racine : il désactive le traitement Jekyll par défaut de GitHub Pages pour garantir un service fichier-à-fichier fidèle au dépôt.
+- Les médias optimisés (`assets/optimized/`) sont générés une seule fois avec des outils de build locaux (Pillow pour les images, un binaire ffmpeg obtenu via `imageio-ffmpeg`) : ces outils ne sont pas des dépendances du site (aucun `package.json`, aucun runtime nécessaire pour servir le site), uniquement des utilitaires ponctuels utilisés pour produire les fichiers statiques versionnés dans le dépôt.
+- Chaque photo optimisée existe en 2 tailles (`-lg` pleine résolution pour les héros/contenus, `-sm` ~640px pour les vignettes de galerie et les posters vidéo) et 2 formats (`.webp` prioritaire via `<picture><source>`, `.jpg` en repli). Le logo est réduit à 120×120 (affiché à 44-48px, donc suffisant même en écran retina).
+- Les vidéos sont réencodées en H.264 avec un CRF ajusté par vidéo (26 par défaut, 28 pour la vidéo la plus complexe) et `-movflags +faststart`, sans changement de résolution ni de framerate : qualité visuelle vérifiée à l'identique, poids réduit de ~39 % en moyenne.
 
 ## Notes pour les prochains développements
 
@@ -116,4 +122,5 @@ Emystylar/
 - Mettre à jour ce document à la fin de chaque Milestone (statut, dernier commit, notes).
 - Pour changer le téléphone, le WhatsApp, l'email, l'adresse, le slogan ou les horaires du site : modifier uniquement les fichiers dans `config/`, jamais le HTML directement.
 - Voir [DEVELOPMENT.md](DEVELOPMENT.md) pour le guide complet de lancement, de test et de contribution.
-- Le Milestone 11 sera le prochain chantier après validation de l'utilisateur (intégration réelle Google Maps/Formspree, Performance, ou Optimisation des médias selon la priorité choisie).
+- Pour régénérer les médias optimisés après une mise à jour d'une photo/vidéo source : relancer un traitement Pillow/ffmpeg équivalent à celui utilisé pour ce Milestone (aucun script réutilisable n'a été committé, volontairement, pour ne pas ajouter d'outillage de build permanent au dépôt).
+- Le Milestone 12 sera le prochain chantier après validation de l'utilisateur (Déploiement, ou intégration réelle Google Maps/Formspree selon la priorité choisie).

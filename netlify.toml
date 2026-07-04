@@ -1,0 +1,31 @@
+# EMSTYLAR — Configuration Netlify (site statique, aucun backend)
+# Compression HTTP (gzip/brotli) et CDN sont déjà appliqués automatiquement
+# par Netlify. Ce fichier ne fait qu'affiner le cache navigateur :
+# - médias optimisés et CSS/JS : cache long (immuables pendant un déploiement)
+# - pages HTML : jamais mises en cache sans revalidation, pour toujours servir
+#   la dernière version publiée.
+
+[[headers]]
+  for = "/assets/optimized/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/config/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

@@ -67,7 +67,9 @@ function initLightbox(cards) {
     const cardImage = card.querySelector("img");
     const category = card.querySelector(".gallery-card__category")?.textContent ?? "";
 
-    image.src = cardImage.src;
+    // La grille utilise des vignettes compressées (-sm) ; la lightbox affiche
+    // l'image en grand format et doit donc utiliser la version pleine (-lg).
+    image.src = cardImage.dataset.full || cardImage.src;
     image.alt = cardImage.alt;
     categoryEl.textContent = category;
     titleEl.textContent = cardImage.alt;

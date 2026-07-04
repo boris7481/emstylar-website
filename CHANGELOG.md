@@ -10,9 +10,29 @@ Le format s'inspire de [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 
 - WhatsApp + Google Maps + Formulaire (intégration réelle Google Maps et Formspree — architecture déjà en place dans `config/`)
 - Nom de domaine réel (remplacement du placeholder `https://www.emstylar.com`)
-- Performance
-- Optimisation des médias
+- Image Open Graph / Twitter Card réelle
 - Déploiement
+
+## [0.6.0] — 2026-07-04
+
+### Ajouté
+
+- **Médias optimisés** : nouveau dossier `assets/optimized/` —
+  - `img/` : chaque photo (`fotos/`) et le logo (`logo/`) sont désormais disponibles en WebP + JPEG optimisé, en deux tailles (`-lg` pleine résolution pour les héros/contenus, `-sm` ~640px pour les vignettes de galerie et les posters vidéo). Le logo est réduit à 120×120 (affiché à 44-48px).
+  - `video/` : les 5 vidéos sont réencodées en H.264 (CRF 26, CRF 28 pour la plus complexe) avec `-movflags +faststart`, sans changement de résolution ni de framerate.
+  - Les fichiers sources (`fotos/`, `logo/`, `videos/`, `assets/video/`) restent strictement intacts : uniquement des copies ont été créées.
+- **Préparation cache/CDN** : `netlify.toml` et `vercel.json`, cache long pour les médias/CSS/JS et revalidation systématique des pages HTML (aucun backend ajouté ; ignorés sans risque par GitHub Pages).
+
+### Modifié
+
+- Les 6 pages (`index.html`, `about.html`, `services.html`, `gallery.html`, `videos.html`, `contact.html`) utilisent désormais les médias optimisés via `<picture>`/`<source type="image/webp">` (photos, logo, favicon) et les vidéos/posters optimisés, sans aucun changement visuel, de design ou d'animation.
+- `assets/js/modules/gallery.js` : la lightbox affiche désormais l'image en pleine résolution (`-lg`, via un attribut `data-full`) plutôt que la vignette compressée de la grille (`-sm`), pour éviter tout flou.
+- `config/site.js` : version passée à `v0.6.0`.
+
+### Vérifié (audit, sans modification)
+
+- HTML/CSS/JS : aucun `console.log`/`debugger` résiduel, aucune duplication significative, tous les imports ES6 utilisés.
+- Un seul H1 par page, hiérarchie H2/H3 sans saut de niveau, `alt` sur toutes les images, `loading="lazy"`/`fetchpriority`/dimensions déjà conformes.
 
 ## [0.5.0] — 2026-07-04
 

@@ -1,0 +1,134 @@
+/* ==========================================================================
+   EMSTYLAR — Styles de base
+   ==========================================================================
+   Éléments HTML par défaut + styles globaux transverses (sélection de
+   texte, scrollbar, focus clavier, états disabled). Aucune mise en page
+   de section ni de composant ici : voir layout.css et components.css.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------
+   Corps du document
+   -------------------------------------------------------------------- */
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+/* --------------------------------------------------------------------
+   Titres — hiérarchie visuelle par défaut (avant tout composant "Titre")
+   -------------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-tight);
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--fs-4xl); }
+h2 { font-size: var(--fs-3xl); }
+h3 { font-size: var(--fs-2xl); }
+h4 { font-size: var(--fs-xl); }
+h5 { font-size: var(--fs-lg); }
+h6 { font-size: var(--fs-md); }
+
+p {
+  line-height: var(--lh-relaxed);
+}
+
+small {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------
+   Accessibilité — lien d'évitement
+   -------------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-sm);
+  z-index: var(--z-modal);
+  padding: var(--space-xs) var(--space-sm);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-sm);
+}
+
+/* --------------------------------------------------------------------
+   Accessibilité — focus clavier visible (WCAG 2.4.7)
+   Le focus par défaut de la souris (:focus) reste discret ; seul le
+   focus au clavier (:focus-visible) reçoit l'anneau doré.
+   -------------------------------------------------------------------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: var(--border-width-md) solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* --------------------------------------------------------------------
+   États désactivés — cohérents sur tous les éléments interactifs
+   -------------------------------------------------------------------- */
+button:disabled,
+input:disabled,
+textarea:disabled,
+select:disabled,
+[aria-disabled="true"],
+.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------
+   Sélection de texte
+   -------------------------------------------------------------------- */
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-black);
+}
+
+/* --------------------------------------------------------------------
+   Scrollbar personnalisée (Firefox + navigateurs WebKit/Blink)
+   -------------------------------------------------------------------- */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold) var(--gray-100);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-gold);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--gray-100);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-gold-dark);
+}

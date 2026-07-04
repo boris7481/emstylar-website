@@ -1,0 +1,227 @@
+/* ==========================================================================
+   EMSTYLAR — Navigation principale (navbar)
+   ==========================================================================
+   Header sticky, transparent au chargement puis opaque au scroll (classe
+   .site-header--scrolled ajoutée par assets/js/modules/scroll.js).
+   Mobile-first : le menu est un tiroir plein hauteur sous le header ;
+   à partir de 768px il redevient une navigation horizontale classique.
+
+   Note logo : le fichier source (logo/*.jpeg) est un carré à fond plein,
+   non recadré (consigne : ne pas modifier les images à ce stade). Il est
+   donc affiché tel quel en petit "badge" à côté du nom de marque en texte
+   (accessible, indexable). Il sera remplacé par une version détourée au
+   Milestone Médias, sans changement de structure HTML nécessaire.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------
+   Conteneur du header
+   -------------------------------------------------------------------- */
+.site-header {
+  background-color: transparent;
+  border-bottom: var(--border-width-sm) solid transparent;
+  transition: background-color var(--transition-slow), box-shadow var(--transition-slow),
+    border-color var(--transition-slow);
+}
+
+.site-header--scrolled {
+  background-color: var(--color-bg);
+  border-bottom-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  min-height: var(--header-height);
+}
+
+/* --------------------------------------------------------------------
+   Marque (logo + nom)
+   -------------------------------------------------------------------- */
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  flex-shrink: 0;
+}
+
+.site-header__logo-badge {
+  display: block;
+  height: 44px;
+  width: 44px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.site-header__brand-name {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------
+   Navigation (liens)
+   Mobile : tiroir plein hauteur ancré sous le header.
+   Desktop (>=768px) : ligne horizontale classique.
+   -------------------------------------------------------------------- */
+.site-nav {
+  position: fixed;
+  top: var(--header-height);
+  right: 0;
+  height: calc(100dvh - var(--header-height));
+  width: min(320px, 85vw);
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(100%);
+  transition: transform var(--transition-slow);
+  z-index: var(--z-modal);
+  padding: var(--space-lg);
+  overflow-y: auto;
+}
+
+.site-nav.is-open {
+  transform: translateX(0);
+}
+
+.site-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.site-nav__link {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+  padding-block: var(--space-3xs);
+  border-bottom: var(--border-width-sm) solid transparent;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.site-nav__link:hover {
+  color: var(--color-gold-ink);
+}
+
+.site-nav__link[aria-current="page"] {
+  color: var(--color-gold-ink);
+  border-bottom-color: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------
+   Rideau d'arrière-plan (mobile)
+   -------------------------------------------------------------------- */
+.nav-backdrop {
+  position: fixed;
+  top: var(--header-height);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(10, 10, 10, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-slow), visibility var(--transition-slow);
+  z-index: var(--z-overlay);
+}
+
+.nav-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --------------------------------------------------------------------
+   Bouton hamburger (mobile uniquement)
+   -------------------------------------------------------------------- */
+.menu-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: var(--space-2xs);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.menu-toggle__bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* --------------------------------------------------------------------
+   Actions du header (WhatsApp + hamburger)
+   -------------------------------------------------------------------- */
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.site-header__whatsapp {
+  display: none;
+}
+
+/* --------------------------------------------------------------------
+   Bascule desktop (>=768px) : navigation horizontale, plus de tiroir
+   -------------------------------------------------------------------- */
+@media (min-width: 768px) {
+  .site-nav {
+    position: static;
+    height: auto;
+    width: auto;
+    background-color: transparent;
+    box-shadow: none;
+    transform: none;
+    transition: none;
+    z-index: auto;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .site-nav__list {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .nav-backdrop,
+  .menu-toggle {
+    display: none;
+  }
+
+  .site-header__whatsapp {
+    display: inline-flex;
+  }
+}
+
+/* --------------------------------------------------------------------
+   Utilitaire : verrouille le scroll de la page quand le menu est ouvert
+   -------------------------------------------------------------------- */
+.has-nav-open {
+  overflow: hidden;
+}

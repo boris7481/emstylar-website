@@ -1,0 +1,68 @@
+/* ==========================================================================
+   EMSTYLAR — Styles d'impression
+   ==========================================================================
+   Chargé uniquement en contexte d'impression via media="print" sur le
+   <link>, donc sans impact sur les performances de rendu à l'écran.
+   Cible aussi des composants qui n'existent pas encore (navbar, footer,
+   bouton WhatsApp flottant) : ces règles n'ont d'effet qu'une fois ces
+   éléments construits au Milestone 2, sans rien casser d'ici là.
+   ========================================================================== */
+
+@media print {
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  /* Éléments sans valeur sur papier */
+  #site-header,
+  #site-footer,
+  .whatsapp-float,
+  .btn,
+  .spinner,
+  .skeleton,
+  .loader-dots {
+    display: none !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: underline;
+  }
+
+  /* Affiche l'URL cible après chaque lien de contenu */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #333;
+  }
+
+  .card,
+  .alert,
+  .section {
+    border: 1px solid #ccc !important;
+    background: #fff !important;
+  }
+
+  .section {
+    padding-block: 1rem !important;
+  }
+
+  img,
+  video {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+}

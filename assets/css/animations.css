@@ -1,0 +1,90 @@
+/* ==========================================================================
+   EMSTYLAR — Animations globales
+   ==========================================================================
+   Bibliothèque native de keyframes + classes utilitaires (fade, slide,
+   zoom, reveal) utilisables sans dépendance externe (AOS ou autre
+   pourra s'y substituer plus tard si besoin, sans rien casser).
+   Toutes les animations sont neutralisées globalement pour les
+   utilisateurs préférant un mouvement réduit (voir reset.css).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------
+   Keyframes
+   -------------------------------------------------------------------- */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-down {
+  from { opacity: 0; transform: translateY(-24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes zoom-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+/* --------------------------------------------------------------------
+   Classes utilitaires
+   À poser sur un élément pour déclencher l'animation à l'apparition.
+   Le déclenchement au scroll (IntersectionObserver) sera ajouté au
+   Milestone Interactions ; ces classes sont prêtes à être basculées
+   par JavaScript (ex. ajout de la classe au moment où l'élément entre
+   dans le viewport).
+   -------------------------------------------------------------------- */
+.u-animate-fade,
+.u-animate-fade-up,
+.u-animate-fade-down,
+.u-animate-slide-left,
+.u-animate-slide-right,
+.u-animate-zoom,
+.u-animate-reveal {
+  animation-duration: var(--duration-slow);
+  animation-timing-function: var(--ease-out);
+  animation-fill-mode: both;
+}
+
+.u-animate-fade      { animation-name: fade-in; }
+.u-animate-fade-up   { animation-name: fade-in-up; }
+.u-animate-fade-down { animation-name: fade-in-down; }
+.u-animate-slide-left  { animation-name: slide-in-left; }
+.u-animate-slide-right { animation-name: slide-in-right; }
+.u-animate-zoom       { animation-name: zoom-in; }
+.u-animate-reveal     { animation-name: reveal; }
+
+/* Décalages utilitaires pour échelonner des animations de groupe */
+.u-delay-1 { animation-delay: 100ms; }
+.u-delay-2 { animation-delay: 200ms; }
+.u-delay-3 { animation-delay: 300ms; }
+.u-delay-4 { animation-delay: 400ms; }
+
+/* --------------------------------------------------------------------
+   Transition générique
+   Classe utilitaire pour les changements d'état simples (hover, etc.)
+   qui ne justifient pas une keyframe dédiée.
+   -------------------------------------------------------------------- */
+.u-transition {
+  transition: all var(--transition-base);
+}

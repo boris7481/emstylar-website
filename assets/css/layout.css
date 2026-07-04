@@ -1,0 +1,118 @@
+/* ==========================================================================
+   EMSTYLAR — Layout
+   ==========================================================================
+   Structure générale du document (header/main/footer) + système de
+   conteneur et de grille responsive. Mobile-first : les colonnes
+   s'ajoutent au fur et à mesure que l'espace disponible augmente.
+   Le détail visuel des composants est défini dans components.css.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------
+   Squelette de page
+   -------------------------------------------------------------------- */
+#site-header {
+  position: sticky;
+  top: 0;
+  /* position:sticky + z-index crée un contexte d'empilement : tout ce qui
+     est rendu à l'intérieur du header (dont le tiroir .site-nav) est
+     confiné à cette "couche". Le header doit donc utiliser un z-index au
+     moins égal à celui du rideau .nav-backdrop (--z-overlay) pour que son
+     propre menu mobile s'affiche bien au-dessus de ce rideau. */
+  z-index: var(--z-modal);
+}
+
+#main-content {
+  min-height: 60vh;
+}
+
+#site-footer {
+  margin-top: var(--space-2xl);
+}
+
+/* --------------------------------------------------------------------
+   Conteneur principal
+   Padding latéral mobile-first : resserré sur petit écran, plus aéré
+   à mesure que le viewport grandit.
+   -------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+.container--wide {
+  max-width: var(--container-wide);
+}
+
+@media (min-width: 768px) {
+  .container {
+    --container-padding: var(--space-md);
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    --container-padding: var(--space-lg);
+  }
+}
+
+/* --------------------------------------------------------------------
+   Grille responsive
+   .grid           : grille de base (1 colonne mobile), gap cohérent.
+   .grid--2/3/4    : nombre de colonnes cible à partir des breakpoints.
+   .grid--auto     : grille fluide auto-adaptative, sans media query,
+                     idéale pour des collections de cartes (galerie...).
+   -------------------------------------------------------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.grid--auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+@media (min-width: 576px) {
+  .grid--2 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 768px) {
+  .grid--3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 992px) {
+  .grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .grid--4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* --------------------------------------------------------------------
+   Utilitaires de disposition minimalistes
+   -------------------------------------------------------------------- */
+.flex {
+  display: flex;
+}
+
+.flex--center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex--between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex--wrap {
+  flex-wrap: wrap;
+}

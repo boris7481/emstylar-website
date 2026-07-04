@@ -1,0 +1,150 @@
+/* ==========================================================================
+   EMSTYLAR — Pied de page (footer)
+   ==========================================================================
+   Contenu générique (marque, liens rapides, coordonnées, réseaux sociaux,
+   copyright) réutilisable à l'identique sur toutes les pages.
+   ========================================================================== */
+
+.site-footer {
+  background-color: var(--color-black);
+  color: var(--color-text-inverse);
+  padding-block: var(--space-2xl) var(--space-lg);
+}
+
+.site-footer a {
+  color: inherit;
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-bottom: var(--border-width-sm) solid var(--gray-800);
+}
+
+@media (min-width: 768px) {
+  .site-footer__grid {
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: var(--space-xl);
+  }
+}
+
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.site-footer__brand-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.site-footer__logo-badge {
+  display: block;
+  height: 48px;
+  width: 48px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.site-footer__brand-name {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+}
+
+.site-footer__tagline {
+  max-width: 32ch;
+  font-size: var(--fs-sm);
+  color: var(--gray-400);
+  line-height: var(--lh-relaxed);
+}
+
+.site-footer__heading {
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.site-footer__col ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.site-footer__col a {
+  font-size: var(--fs-sm);
+  color: var(--gray-300);
+  transition: color var(--transition-fast);
+}
+
+.site-footer__col a:hover {
+  color: var(--color-gold);
+}
+
+.site-footer__contact li {
+  font-size: var(--fs-sm);
+  color: var(--gray-300);
+}
+
+.site-footer__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-top: var(--space-lg);
+  font-size: var(--fs-xs);
+  color: var(--gray-500);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .site-footer__bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+/* --------------------------------------------------------------------
+   Bouton retour en haut — flottant, en dehors du flux du footer
+   -------------------------------------------------------------------- */
+.back-to-top {
+  position: fixed;
+  right: var(--space-md);
+  bottom: var(--space-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity var(--transition-base), transform var(--transition-base),
+    visibility var(--transition-base), background-color var(--transition-fast);
+  z-index: var(--z-floating);
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background-color: var(--color-gold-dark);
+}

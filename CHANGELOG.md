@@ -8,12 +8,17 @@ Le format s'inspire de [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 
 ### À venir
 
-- Contact
-- WhatsApp + Google Maps + Formulaire
+- WhatsApp + Google Maps + Formulaire (intégration réelle Google Maps et Formspree)
 - SEO
 - Performance
 - Optimisation des médias
 - Déploiement
+
+## [0.3.0] — 2026-07-04
+
+### Ajouté
+
+- **Contact** : page Contact complète — hero (breadcrumb, titre, sous-titre, image de couverture), cartes de coordonnées à icônes SVG (EMSTYLAR, téléphone, WhatsApp, email, adresse), formulaire HTML5 (Nom, Prénom, Email, Téléphone, Sujet, Type de demande, Message) avec validation native et retour visuel (`is-invalid`), préparé pour Formspree (URL placeholder), section WhatsApp dédiée (message pré-rempli), carte de localisation illustrée (Yaoundé › Nkolbisson › Usine des Eaux) avec bouton "Ouvrir dans Google Maps" (lien placeholder), section Horaires (placeholders), FAQ Contact (accordéon réutilisé), CTA final ("Votre prochaine création commence ici.").
 
 ## [0.2.0] — 2026-07-04
 

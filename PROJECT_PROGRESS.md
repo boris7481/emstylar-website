@@ -28,10 +28,10 @@ Emystylar/
 └── .gitignore
 ```
 
-- **Version actuelle :** v0.2.0
+- **Version actuelle :** v0.3.0
 - **Date de création du projet :** 2026-07-02
 - **Dernière mise à jour de ce document :** 2026-07-04
-- **Dernier commit :** `34e149c` — docs(project): add project documentation and development guidelines *(placeholder — à mettre à jour à chaque fin de Milestone)*
+- **Dernier commit :** `3d7e6c8` — feat(videos): build responsive videos page and update project documentation *(placeholder — à mettre à jour à chaque fin de Milestone)*
 - **Hébergement prévu :** à définir *(placeholder)*
 - **Nom de domaine :** à définir *(placeholder)*
 
@@ -47,8 +47,8 @@ Emystylar/
 | Services | ✅ Terminé |
 | Gallery | ✅ Terminé |
 | Videos | ✅ Terminé |
-| Contact | ⬜ Restant |
-| WhatsApp + Google Maps + Formulaire | ⬜ Restant |
+| Contact | ✅ Terminé |
+| WhatsApp + Google Maps + Formulaire | ⬜ Restant *(WhatsApp finalisé ; Google Maps réel et Formspree réel restants)* |
 | SEO | ⬜ Restant |
 | Performance | ⬜ Restant |
 | Optimisation des médias | ⬜ Restant |
@@ -64,11 +64,12 @@ Emystylar/
 - Page Services complète (formations et cours de vacances).
 - Page Galerie complète : filtres par catégorie, lightbox accessible (clavier, `aria-modal`).
 - Page Vidéos complète : hero, grille responsive de 5 vidéos avec lecteur HTML5 natif (contrôles natifs, `preload="metadata"`, téléchargement désactivé), catégorie/description/durée par carte, boutons "Demander cette création" et WhatsApp (message pré-rempli par vidéo).
-- Squelette de base pour Contact (structure HTML minimale, non finalisé).
+- Page Contact complète : hero, cartes de coordonnées à icônes SVG (identité, téléphone, WhatsApp, email, adresse), formulaire HTML5 (validation native + retour visuel `is-invalid`) préparé pour Formspree (URL placeholder), section WhatsApp dédiée (message pré-rempli), carte de localisation illustrée (placeholder avant Google Maps réel), horaires (placeholders), FAQ (accordéon réutilisé), CTA final.
 
 ## Fonctionnalités restantes
 
-- Page Contact complète : formulaire fonctionnel, intégration WhatsApp, intégration Google Maps.
+- Intégration de la carte Google Maps réelle (actuellement carte illustrée + bouton placeholder `#`).
+- Connexion réelle du formulaire à Formspree (actuellement URL placeholder `https://formspree.io/f/xxxxxxxx`).
 - Optimisation SEO (balises meta, Open Graph, données structurées, sitemap.xml, robots.txt).
 - Optimisation des performances (Lighthouse > 90).
 - Optimisation des médias (compression et redimensionnement des photos/vidéos sources vers `assets/img/` et `assets/video/`).
@@ -83,9 +84,12 @@ Emystylar/
 - Chaque page inclut un lien d'évitement (`skip-link`) et une structure sémantique pour l'accessibilité.
 - La page Vidéos réutilise uniquement le lecteur HTML5 natif (aucun lecteur personnalisé, aucune bibliothèque externe) ; un module JS minimal (`videos.js`) met en pause les autres lecteurs dès qu'une vidéo démarre, pour éviter que plusieurs pistes audio se superposent.
 - Les durées de vidéo sont affichées comme placeholder (`Durée : —`) dans les métadonnées de carte : le lecteur natif affiche la durée réelle une fois les métadonnées chargées.
+- La page Contact repose entièrement sur la validation HTML5 native (`required`, `type="email"`, etc.) ; `contact-form.js` ne fait qu'ajouter un retour visuel (`is-invalid`) et n'implémente aucun envoi réel tant que l'URL Formspree n'est pas définitive.
+- La localisation est présentée sous forme de carte illustrée (Yaoundé › Nkolbisson › Usine des Eaux) avec un bouton "Ouvrir dans Google Maps" en lien placeholder (`#`), en attendant l'intégration de la vraie carte.
+- Les horaires d'ouverture affichés sont des placeholders explicitement marqués comme tels (badge "Placeholder" + légende du tableau).
 
 ## Notes pour les prochains développements
 
 - Le README.md existant contient une roadmap (Milestone 0 à 5) antérieure et distincte de la nomenclature utilisée dans ce document ; ce fichier `PROJECT_PROGRESS.md` fait désormais référence pour le suivi d'avancement.
 - Mettre à jour ce document à la fin de chaque Milestone (statut, dernier commit, notes).
-- Le Milestone 8 (Contact) sera le prochain chantier après validation de l'utilisateur.
+- Le Milestone 9 sera le prochain chantier après validation de l'utilisateur (intégration réelle Google Maps / Formspree envisageable à ce stade, ou SEO selon la priorité choisie).

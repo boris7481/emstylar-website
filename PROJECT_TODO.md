@@ -33,17 +33,23 @@
   - [x] Accessibilité (navigation clavier, ARIA labels, hiérarchie de titres, contrastes)
   - [x] Responsive desktop / tablette / mobile
   - [x] Vérification console et régression sur les autres pages
+- [x] **Contact**
+  - [x] Hero (breadcrumb, titre, sous-titre, image de couverture)
+  - [x] Cartes de coordonnées à icônes SVG (identité, téléphone, WhatsApp, email, adresse)
+  - [x] Formulaire HTML5 (Nom, Prénom, Email, Téléphone, Sujet, Type de demande, Message) avec validation native
+  - [x] Section WhatsApp dédiée (message pré-rempli)
+  - [x] Carte de localisation illustrée + bouton "Ouvrir dans Google Maps" (placeholder)
+  - [x] Section Horaires (placeholders clairement indiqués)
+  - [x] FAQ Contact (accordéon réutilisé)
+  - [x] CTA final (Prendre rendez-vous / Discuter sur WhatsApp)
+  - [x] Accessibilité, responsive et vérification console/régression
 
 ## Milestones restants
 
-- [ ] **Contact**
-  - [ ] Mise en page complète de la page Contact
-  - [ ] Intégration du formulaire de contact
-  - [ ] Validation des champs (accessibilité incluse)
 - [ ] **WhatsApp + Google Maps + Formulaire**
-  - [ ] Lien WhatsApp finalisé (numéro, message pré-rempli)
-  - [ ] Intégration Google Maps (localisation de l'atelier)
-  - [ ] Endpoint du formulaire de contact configuré (ex. Formspree)
+  - [x] Lien WhatsApp finalisé (numéro, message pré-rempli)
+  - [ ] Intégration Google Maps réelle (actuellement carte illustrée + lien `#`)
+  - [ ] Endpoint du formulaire de contact configuré (Formspree réel — actuellement URL placeholder)
 - [ ] **SEO**
   - [ ] Balises meta (title, description) par page
   - [ ] Open Graph / Twitter Cards

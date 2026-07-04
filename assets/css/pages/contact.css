@@ -1,3 +1,125 @@
 /* ==========================================================================
    EMSTYLAR — Styles spécifiques à la page Contact (contact.html)
+   ==========================================================================
+   Cette page réutilise les composants partagés (.page-hero, .icon-card,
+   .form-*, .accordion, .cta-section, .table) définis dans components.css.
+   Seules la mise en page du formulaire, la carte de localisation illustrée
+   et la légende du tableau d'horaires sont propres à cette page.
    ========================================================================== */
+
+/* --------------------------------------------------------------------
+   Formulaire de contact
+   -------------------------------------------------------------------- */
+.contact-form {
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  padding: var(--space-lg);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 var(--space-md);
+}
+
+.contact-form .form-hint {
+  margin-bottom: var(--space-sm);
+}
+
+@media (min-width: 576px) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* --------------------------------------------------------------------
+   Carte de localisation illustrée (placeholder, avant intégration
+   de la carte Google Maps réelle)
+   -------------------------------------------------------------------- */
+.map-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  padding: var(--space-2xl) var(--space-md);
+  text-align: center;
+  background-color: var(--color-bg-alt);
+  border: var(--border-width-sm) dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+}
+
+.map-placeholder__visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+}
+
+.map-placeholder__ring {
+  position: absolute;
+  inset: 0;
+  border: var(--border-width-sm) solid rgba(201, 162, 75, 0.35);
+  border-radius: var(--radius-full);
+}
+
+.map-placeholder__ring--2 {
+  inset: 20px;
+  border-color: rgba(201, 162, 75, 0.55);
+}
+
+.map-placeholder__pin {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background-color: var(--color-gold);
+  color: var(--color-black);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-gold);
+}
+
+.map-placeholder__pin svg {
+  width: 30px;
+  height: 30px;
+}
+
+.map-placeholder__path {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3xs);
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+}
+
+.map-placeholder__path span:not(:last-child)::after {
+  content: "›";
+  margin-left: var(--space-3xs);
+  color: var(--color-gold-ink);
+}
+
+.map-placeholder__note {
+  max-width: 42ch;
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+/* --------------------------------------------------------------------
+   Tableau des horaires
+   -------------------------------------------------------------------- */
+.hours-table__caption {
+  margin-bottom: var(--space-sm);
+  font-size: var(--fs-xs);
+  font-style: italic;
+  color: var(--color-text-muted);
+  text-align: left;
+  caption-side: top;
+}

@@ -6,17 +6,14 @@ import { initBackToTop } from "./modules/back-to-top.js";
 import { initWhatsappButton } from "./modules/whatsapp-button.js";
 import { initScrollHeader, initHeroParallax } from "./modules/scroll.js";
 import { initScrollReveal } from "./modules/reveal.js";
+import { applyConfig } from "./modules/config-bindings.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  applyConfig();
   initNavbar();
   initBackToTop();
   initWhatsappButton();
   initScrollHeader(document.getElementById("site-header"));
   initHeroParallax(document.querySelector(".hero__media"));
   initScrollReveal();
-
-  const yearEl = document.getElementById("current-year");
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
 });

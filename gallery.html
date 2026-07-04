@@ -31,11 +31,11 @@
         <img
           class="site-header__logo-badge"
           src="logo/WhatsApp Image 2026-07-03 at 22.06.16 (1).jpeg"
-          alt="Logo EMSTYLAR"
+          alt="Logo EMSTYLAR" data-config-attr="alt:company.logoAlt"
           width="1078"
           height="1080"
         />
-        <span class="site-header__brand-name">EMSTYLAR</span>
+        <span class="site-header__brand-name" data-config-text="company.name">EMSTYLAR</span>
       </a>
 
       <nav id="primary-menu-panel" class="site-nav" aria-label="Navigation principale">
@@ -52,7 +52,7 @@
       <div class="site-header__actions">
         <a
           class="btn btn--primary site-header__whatsapp"
-          href="https://wa.me/237696023673"
+          href="https://wa.me/237696023673" data-config-attr="href:contact.whatsappBaseUrl"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -351,14 +351,14 @@
           <img
             class="site-footer__logo-badge"
             src="logo/WhatsApp Image 2026-07-03 at 22.06.16 (1).jpeg"
-            alt="Logo EMSTYLAR"
+            alt="Logo EMSTYLAR" data-config-attr="alt:company.logoAlt"
             width="1078"
             height="1080"
             loading="lazy"
           />
-          <span class="site-footer__brand-name">EMSTYLAR</span>
+          <span class="site-footer__brand-name" data-config-text="company.name">EMSTYLAR</span>
         </div>
-        <p class="site-footer__tagline">
+        <p class="site-footer__tagline" data-config-text="company.tagline">
           Atelier de mode, couture et stylisme à Nkolbisson (Usine des Eaux), Yaoundé — Cameroun.
         </p>
       </div>
@@ -378,9 +378,9 @@
       <div class="site-footer__col">
         <h2 class="site-footer__heading">Coordonnées</h2>
         <ul class="site-footer__contact">
-          <li><a href="tel:+237696023673">+237 6 96 02 36 73</a></li>
-          <li><a href="https://wa.me/237696023673" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-          <li>Nkolbisson (Usine des Eaux), Yaoundé, Cameroun</li>
+          <li><a href="tel:+237696023673" data-config-attr="href:contact.phoneHref" data-config-text="contact.phone">+237 696 02 36 73</a></li>
+          <li><a href="https://wa.me/237696023673" data-config-attr="href:contact.whatsappBaseUrl" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          <li data-config-text="maps.address">Nkolbisson (Usine des Eaux), Yaoundé, Cameroun</li>
         </ul>
       </div>
 
@@ -395,7 +395,7 @@
     </div>
 
     <div class="site-footer__bottom container">
-      <p>&copy; <span id="current-year"></span> EMSTYLAR — Tous droits réservés.</p>
+      <p>&copy; <span id="current-year" data-config-text="site.year"></span> <span data-config-text="company.name">EMSTYLAR</span> — Tous droits réservés.</p>
     </div>
   </footer>
 

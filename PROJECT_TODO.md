@@ -43,13 +43,29 @@
   - [x] FAQ Contact (accordéon réutilisé)
   - [x] CTA final (Prendre rendez-vous / Discuter sur WhatsApp)
   - [x] Accessibilité, responsive et vérification console/régression
+- [x] **Intégrations & Configuration Centralisée**
+  - [x] Dossier `config/` créé (site, company, contact, social, maps, seo, form)
+  - [x] `company.js` : nom, slogan, ville, quartier, repère, pays
+  - [x] `contact.js` : téléphone, WhatsApp, email (placeholder), horaires
+  - [x] `social.js` : Facebook, Instagram, TikTok, YouTube, LinkedIn (placeholders)
+  - [x] `maps.js` : adresse complète, coordonnées GPS (placeholder), lien Google Maps (placeholder)
+  - [x] `seo.js` : nom du site, description, auteur, langue, mots-clés, Open Graph, Twitter Cards, canonical
+  - [x] `form.js` : endpoint Formspree (placeholder), validation, messages de succès/erreur
+  - [x] `site.js` : version (v0.4.0), nom du projet, environnement, copyright, année
+  - [x] Module `config-bindings.js` liant `config/` au DOM (`data-config-text`, `data-config-attr`, `data-whatsapp-message`)
+  - [x] Remplacement des valeurs codées en dur (téléphone, WhatsApp, adresse, nom, slogan, horaires, email) sur les 6 pages
+  - [x] Tous les boutons WhatsApp vérifiés (numéro centralisé, y compris ceux avec message pré-rempli)
+  - [x] Formulaire de contact relié à `config/form.js` (endpoint placeholder)
+  - [x] Carte de localisation reliée à `config/maps.js` et `config/company.js`
+  - [x] Design, animations, galerie, vidéos, homepage et composants non modifiés
+  - [x] Tests desktop/tablette/mobile, console, régression
 
 ## Milestones restants
 
-- [ ] **WhatsApp + Google Maps + Formulaire**
-  - [x] Lien WhatsApp finalisé (numéro, message pré-rempli)
-  - [ ] Intégration Google Maps réelle (actuellement carte illustrée + lien `#`)
-  - [ ] Endpoint du formulaire de contact configuré (Formspree réel — actuellement URL placeholder)
+- [ ] **WhatsApp + Google Maps + Formulaire (intégrations réelles)**
+  - [x] Lien WhatsApp finalisé (numéro, message pré-rempli, centralisé dans `config/contact.js`)
+  - [ ] Intégration Google Maps réelle (actuellement carte illustrée + lien `#` piloté par `config/maps.js`)
+  - [ ] Endpoint du formulaire de contact configuré (Formspree réel — actuellement URL placeholder dans `config/form.js`)
 - [ ] **SEO**
   - [ ] Balises meta (title, description) par page
   - [ ] Open Graph / Twitter Cards

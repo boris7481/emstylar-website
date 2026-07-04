@@ -31,11 +31,11 @@
         <img
           class="site-header__logo-badge"
           src="logo/WhatsApp Image 2026-07-03 at 22.06.16 (1).jpeg"
-          alt="Logo EMSTYLAR"
+          alt="Logo EMSTYLAR" data-config-attr="alt:company.logoAlt"
           width="1078"
           height="1080"
         />
-        <span class="site-header__brand-name">EMSTYLAR</span>
+        <span class="site-header__brand-name" data-config-text="company.name">EMSTYLAR</span>
       </a>
 
       <nav id="primary-menu-panel" class="site-nav" aria-label="Navigation principale">
@@ -52,7 +52,7 @@
       <div class="site-header__actions">
         <a
           class="btn btn--primary site-header__whatsapp"
-          href="https://wa.me/237696023673"
+          href="https://wa.me/237696023673" data-config-attr="href:contact.whatsappBaseUrl"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -114,7 +114,7 @@
       <div class="container">
         <header class="section__header" data-reveal>
           <span class="eyebrow">Nos coordonnées</span>
-          <h2 class="section-title" id="contact-info-title">EMSTYLAR — L'œil du Design</h2>
+          <h2 class="section-title" id="contact-info-title"><span data-config-text="company.name">EMSTYLAR</span> — <span data-config-text="company.slogan">L'œil du Design</span></h2>
           <p class="section-subtitle">
             Toutes nos coordonnées pour échanger avec l'atelier, par le canal qui vous convient le
             mieux.
@@ -130,8 +130,8 @@
                 <path d="M9.5 20v-5h5v5" />
               </svg>
             </span>
-            <h3 class="card__title">EMSTYLAR</h3>
-            <p class="card__body">L'œil du Design — atelier de mode, couture et stylisme.</p>
+            <h3 class="card__title" data-config-text="company.name">EMSTYLAR</h3>
+            <p class="card__body"><span data-config-text="company.slogan">L'œil du Design</span> — atelier de mode, couture et stylisme.</p>
           </article>
 
           <article class="card icon-card icon-card--compact" data-reveal>
@@ -141,7 +141,7 @@
               </svg>
             </span>
             <h3 class="card__title">Téléphone</h3>
-            <p class="card__body"><a class="link" href="tel:+237696023673">+237 696 02 36 73</a></p>
+            <p class="card__body"><a class="link" href="tel:+237696023673" data-config-attr="href:contact.phoneHref" data-config-text="contact.phone">+237 696 02 36 73</a></p>
           </article>
 
           <article class="card icon-card icon-card--compact" data-reveal>
@@ -154,9 +154,10 @@
             <p class="card__body">
               <a
                 class="link"
-                href="https://wa.me/237696023673"
+                href="https://wa.me/237696023673" data-config-attr="href:contact.whatsappBaseUrl"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-config-text="contact.phone"
               >
                 +237 696 02 36 73
               </a>
@@ -172,7 +173,7 @@
             </span>
             <h3 class="card__title">Email</h3>
             <p class="card__body">
-              <a class="link" href="mailto:Emostyvimlarissa@gmail.com">Emostyvimlarissa@gmail.com</a>
+              <a class="link" href="mailto:Emostyvimlarissa@gmail.com" data-config-attr="href:contact.emailHref" data-config-text="contact.email">Emostyvimlarissa@gmail.com</a>
             </p>
           </article>
 
@@ -184,7 +185,7 @@
               </svg>
             </span>
             <h3 class="card__title">Adresse</h3>
-            <p class="card__body">Nkolbisson (Usine des Eaux), Yaoundé, Cameroun</p>
+            <p class="card__body" data-config-text="maps.address">Nkolbisson (Usine des Eaux), Yaoundé, Cameroun</p>
           </article>
         </div>
       </div>
@@ -208,11 +209,12 @@
         <form
           class="contact-form card"
           action="https://formspree.io/f/xxxxxxxx"
+          data-config-attr="action:form.endpoint"
           method="POST"
           data-reveal
           novalidate
         >
-          <!-- URL Formspree provisoire — à remplacer par l'endpoint définitif du formulaire -->
+          <!-- URL Formspree provisoire (config/form.js) — à remplacer par l'endpoint définitif du formulaire -->
           <div class="form-row">
             <div class="form-group">
               <label class="form-label form-label--required" for="contact-lastname">Nom</label>
@@ -324,6 +326,7 @@
           <a
             class="btn btn--primary"
             href="https://wa.me/237696023673?text=Bonjour%20EMSTYLAR%2C%20je%20souhaite%20avoir%20des%20informations%20sur%20vos%20cr%C3%A9ations."
+            data-whatsapp-message="Bonjour EMSTYLAR, je souhaite avoir des informations sur vos créations."
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -363,9 +366,9 @@
 
           <div class="map-placeholder__body">
             <p class="map-placeholder__path">
-              <span>Yaoundé</span>
-              <span>Nkolbisson</span>
-              <span>Usine des Eaux</span>
+              <span data-config-text="company.city">Yaoundé</span>
+              <span data-config-text="company.district">Nkolbisson</span>
+              <span data-config-text="company.landmark">Usine des Eaux</span>
             </p>
             <p class="map-placeholder__note">
               Carte Google Maps interactive à venir. Le bouton ci-dessous sera activé dès son
@@ -374,6 +377,7 @@
             <a
               class="btn btn--outline"
               href="#"
+              data-config-attr="href:maps.googleMapsUrl"
               aria-label="Ouvrir la localisation d'EMSTYLAR dans Google Maps (lien à venir)"
             >
               Ouvrir dans Google Maps
@@ -409,16 +413,16 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row">Lundi – Vendredi</th>
-                <td>8h00 – 18h00 <span class="badge">Placeholder</span></td>
+                <th scope="row" data-config-text="contact.hours.0.days">Lundi – Vendredi</th>
+                <td><span data-config-text="contact.hours.0.hours">8h00 – 18h00</span> <span class="badge">Placeholder</span></td>
               </tr>
               <tr>
-                <th scope="row">Samedi</th>
-                <td>9h00 – 16h00 <span class="badge">Placeholder</span></td>
+                <th scope="row" data-config-text="contact.hours.1.days">Samedi</th>
+                <td><span data-config-text="contact.hours.1.hours">9h00 – 16h00</span> <span class="badge">Placeholder</span></td>
               </tr>
               <tr>
-                <th scope="row">Dimanche</th>
-                <td>Fermé <span class="badge">Placeholder</span></td>
+                <th scope="row" data-config-text="contact.hours.2.days">Dimanche</th>
+                <td><span data-config-text="contact.hours.2.hours">Fermé</span> <span class="badge">Placeholder</span></td>
               </tr>
             </tbody>
           </table>
@@ -486,6 +490,7 @@
           <a href="#contact-form" class="btn btn--primary">Prendre rendez-vous</a>
           <a
             href="https://wa.me/237696023673?text=Bonjour%20EMSTYLAR%2C%20je%20souhaite%20avoir%20des%20informations%20sur%20vos%20cr%C3%A9ations."
+            data-whatsapp-message="Bonjour EMSTYLAR, je souhaite avoir des informations sur vos créations."
             target="_blank"
             rel="noopener noreferrer"
             class="btn btn--on-dark"
@@ -504,14 +509,14 @@
           <img
             class="site-footer__logo-badge"
             src="logo/WhatsApp Image 2026-07-03 at 22.06.16 (1).jpeg"
-            alt="Logo EMSTYLAR"
+            alt="Logo EMSTYLAR" data-config-attr="alt:company.logoAlt"
             width="1078"
             height="1080"
             loading="lazy"
           />
-          <span class="site-footer__brand-name">EMSTYLAR</span>
+          <span class="site-footer__brand-name" data-config-text="company.name">EMSTYLAR</span>
         </div>
-        <p class="site-footer__tagline">
+        <p class="site-footer__tagline" data-config-text="company.tagline">
           Atelier de mode, couture et stylisme à Nkolbisson (Usine des Eaux), Yaoundé — Cameroun.
         </p>
       </div>
@@ -531,9 +536,9 @@
       <div class="site-footer__col">
         <h2 class="site-footer__heading">Coordonnées</h2>
         <ul class="site-footer__contact">
-          <li><a href="tel:+237696023673">+237 6 96 02 36 73</a></li>
-          <li><a href="https://wa.me/237696023673" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-          <li>Nkolbisson (Usine des Eaux), Yaoundé, Cameroun</li>
+          <li><a href="tel:+237696023673" data-config-attr="href:contact.phoneHref" data-config-text="contact.phone">+237 696 02 36 73</a></li>
+          <li><a href="https://wa.me/237696023673" data-config-attr="href:contact.whatsappBaseUrl" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          <li data-config-text="maps.address">Nkolbisson (Usine des Eaux), Yaoundé, Cameroun</li>
         </ul>
       </div>
 
@@ -548,7 +553,7 @@
     </div>
 
     <div class="site-footer__bottom container">
-      <p>&copy; <span id="current-year"></span> EMSTYLAR — Tous droits réservés.</p>
+      <p>&copy; <span id="current-year" data-config-text="site.year"></span> <span data-config-text="company.name">EMSTYLAR</span> — Tous droits réservés.</p>
     </div>
   </footer>
 

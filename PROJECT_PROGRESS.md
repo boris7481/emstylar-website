@@ -43,7 +43,7 @@ Emystylar/
 └── .gitignore
 ```
 
-- **Version actuelle :** v0.7.0
+- **Version actuelle :** v0.8.0
 - **Date de création du projet :** 2026-07-02
 - **Dernière mise à jour de ce document :** 2026-07-07
 - **Dernier commit :** *(à renseigner après ce commit — placeholder mis à jour à chaque fin de Milestone/amélioration)*
@@ -90,6 +90,7 @@ Emystylar/
 - Identité visuelle homepage : nouvelle image Hero (`assets/optimized/img/hero-home.jpg`/`.webp`, générée à partir d'un visuel fourni, non modifié) remplaçant l'ancienne photo de détail — même layout, parallaxe, animation Ken Burns et overlay conservés.
 - Image de partage Open Graph / Twitter Card : `assets/optimized/img/og/og-image.jpg` (placeholder de marque 1200×630, à remplacer par le visuel définitif sans toucher au code — voir `config/seo.js`), balises `og:image*`/`twitter:image*` complètes et champ `image` ajouté au JSON-LD `LocalBusiness` sur les 6 pages.
 - Section "Avis de nos clientes" (page d'accueil, juste avant le CTA final) : grille de 6 témoignages **réels** (nom + note 5 étoiles + citation, sans ville), carte "Partager votre expérience" ouvrant une modale de formulaire (Nom, Ville, Email, note 1-5 étoiles en CSS pur, témoignage) reliée à Formspree (URL placeholder), avec mention explicite que les avis sont relus avant publication. Nouveaux composants réutilisables : `.modal` (fenêtre superposée générique) et `.star-rating` (notation accessible, sans JavaScript).
+- Section "Nos réalisations en chiffres" (page d'accueil, entre le Hero et "Nos engagements") : 4 cartes de statistiques (+400 créations, +200 clientes, 10+ années, 100% sur mesure — valeurs provisoires) avec animation de comptage progressif (0 → valeur finale) au passage dans le viewport, déclenchée une seule fois, désactivée si `prefers-reduced-motion` est actif. Nouveau module `assets/js/modules/counters.js`, aucun nouveau composant CSS structurel (réutilise `.card`, `.grid grid--2 grid--4`, `.section__header`).
 
 ## Fonctionnalités restantes
 
@@ -121,6 +122,7 @@ Emystylar/
 - Les vidéos sont réencodées en H.264 avec un CRF ajusté par vidéo (26 par défaut, 28 pour la vidéo la plus complexe) et `-movflags +faststart`, sans changement de résolution ni de framerate : qualité visuelle vérifiée à l'identique, poids réduit de ~39 % en moyenne.
 - Les témoignages affichés sont exclusivement des avis réels transmis par l'utilisateur : aucun faux témoignage n'a été inventé à aucun moment (les placeholders initiaux disaient explicitement "votre témoignage apparaîtra ici").
 - Le champ "ville" a été retiré des cartes de témoignages (information non fournie pour les vrais avis, décision explicite de l'utilisateur pour ne rien inventer) ; la règle CSS correspondante (`.testimonial-card__city`) est laissée en place mais n'est plus utilisée par aucun élément.
+- Les chiffres de la section "Nos réalisations en chiffres" sont explicitement provisoires (annoncé par l'utilisateur) ; le HTML affiche toujours la valeur finale par défaut (fallback statique sans JavaScript), le compteur ne fait que l'animer visuellement au chargement.
 
 ## Notes pour les prochains développements
 
@@ -130,4 +132,5 @@ Emystylar/
 - Voir [DEVELOPMENT.md](DEVELOPMENT.md) pour le guide complet de lancement, de test et de contribution.
 - Pour régénérer les médias optimisés après une mise à jour d'une photo/vidéo source : relancer un traitement Pillow/ffmpeg équivalent à celui utilisé pour ce Milestone (aucun script réutilisable n'a été committé, volontairement, pour ne pas ajouter d'outillage de build permanent au dépôt).
 - Intégration du nouveau logo (`assets/img/logo/logo-primary.svg`) dans le header/footer/favicon : en attente d'une version à fond transparent fournie par l'utilisateur.
+- Les valeurs de "Nos réalisations en chiffres" sont à remplacer par les chiffres réels dès qu'ils seront confirmés (il suffit de modifier les attributs `data-count-to`/`data-count-prefix`/`data-count-suffix` et le texte affiché dans `index.html`, aucun changement de code nécessaire).
 - Le Milestone 12 sera le prochain chantier après validation de l'utilisateur (Déploiement, ou intégration réelle Google Maps/Formspree selon la priorité choisie).

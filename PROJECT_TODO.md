@@ -92,6 +92,12 @@
   - [x] Nouveaux composants réutilisables `.modal` et `.star-rating` (CSS pur, accessible, sans bibliothèque)
   - [x] 6 placeholders remplacés par de vrais témoignages clients (aucun avis inventé) ; champ "ville" retiré à la demande explicite de l'utilisateur
   - [x] Accessibilité (piège à focus de la modale, ARIA, hiérarchie des titres) et non-régression sur les 6 pages vérifiées
+- [x] **Statistiques animées**
+  - [x] Section "Nos réalisations en chiffres" entre le Hero et "Nos engagements" (page d'accueil uniquement)
+  - [x] 4 cartes (+400 créations, +200 clientes, 10+ années, 100% sur mesure — valeurs provisoires), réutilisant `.card`/`.grid grid--2 grid--4`/`.section__header`
+  - [x] Nouveau module `assets/js/modules/counters.js` : compteur animé (0 → valeur finale, ease-out, ~1,4s), déclenché une seule fois via `IntersectionObserver`
+  - [x] `prefers-reduced-motion` respecté (aucune animation, valeur finale statique conservée) ; aucune bibliothèque externe
+  - [x] Responsive (4 colonnes desktop / 2×2 tablette / 1 colonne mobile), accessibilité (hiérarchie des titres, `aria-labelledby`) et non-régression sur les 6 pages vérifiées
 
 ## Milestones restants
 
@@ -102,6 +108,7 @@
   - [ ] Nom de domaine réel (remplacer le placeholder `https://www.emstylar.com` partout : canonical, Open Graph, sitemap.xml, robots.txt, JSON-LD, `config/seo.js`)
   - [ ] Image Open Graph / Twitter Card définitive (actuellement un placeholder de marque, pas le visuel final)
   - [ ] Nouveau logo (`assets/img/logo/logo-primary.svg`) à intégrer dans header/footer/favicon dès réception d'une version à fond transparent
+  - [ ] Chiffres réels pour la section "Nos réalisations en chiffres" (actuellement des valeurs provisoires)
 - [ ] **Déploiement**
   - [ ] Choix de l'hébergement
   - [ ] Configuration du nom de domaine

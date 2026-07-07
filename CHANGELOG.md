@@ -12,7 +12,16 @@ Le format s'inspire de [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 - Nom de domaine réel (remplacement du placeholder `https://www.emstylar.com`)
 - Image Open Graph / Twitter Card définitive
 - Nouveau logo (fond transparent) à intégrer dans header/footer/favicon
+- Chiffres réels pour la section "Nos réalisations en chiffres" (valeurs actuellement provisoires)
 - Déploiement
+
+## [0.8.0] — 2026-07-07
+
+### Ajouté
+
+- **Section "Nos réalisations en chiffres"** (page d'accueil, entre le Hero et "Nos engagements") : 4 cartes de statistiques (+400 créations, +200 clientes, 10+ années d'expérience, 100% sur mesure — valeurs provisoires), avec animation de comptage progressif (0 → valeur finale) déclenchée une seule fois à l'entrée dans le viewport.
+- Nouveau module `assets/js/modules/counters.js` : compteur animé en JavaScript natif (`requestAnimationFrame`, ease-out cubique, ~1,4s), sur le même principe que `reveal.js` — le HTML affiche toujours la valeur finale par défaut, et respecte `prefers-reduced-motion` (aucune animation si activé).
+- Aucun nouveau composant CSS structurel : la section réutilise entièrement `.card`, `.grid grid--2 grid--4` et `.section__header` déjà existants (seuls `.stat-card`, `.stat-card__value` et `.stat-card__label` ont été ajoutés à `assets/css/pages/home.css`).
 
 ## [0.7.0] — 2026-07-07
 

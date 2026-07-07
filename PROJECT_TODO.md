@@ -128,6 +128,12 @@
   - [x] Composants réutilisés au maximum (`.section`, `.container`, `.btn`, `.cta-section__actions`) ; seuls les éléments réellement nouveaux ont été créés (`.error-page*`)
   - [x] `robots: noindex, follow` (page exclue de l'indexation, liens toujours suivis), sans Open Graph ni JSON-LD
   - [x] Responsive (desktop/tablette/mobile), accessibilité (un seul H1, navigation clavier complète, illustration décorative masquée aux lecteurs d'écran) et non-régression sur les 6 pages existantes vérifiées
+- [x] **Footer professionnel — email officiel**
+  - [x] Adresse `Emostyvimlarissa@gmail.com` ajoutée à la colonne "Coordonnées" du footer (sur les 7 pages), lien `mailto:` cliquable, accessible, responsive
+  - [x] Email déjà centralisé dans `config/contact.js` (aucun déplacement nécessaire) ; mention "placeholder" retirée, adresse désormais officiellement confirmée
+  - [x] Aucune duplication : réutilisation exacte du balisage `<li><a>` déjà utilisé pour le téléphone, aucun nouveau composant CSS
+  - [x] Vérification complète du footer (logo, nom, slogan, téléphone, WhatsApp, email, adresse, réseaux sociaux, liens de navigation, copyright) : tous déjà présents, aucun doublon introduit
+  - [x] Tous les liens du footer vérifiés fonctionnels sur les 7 pages ; non-régression complète confirmée
 
 ## Milestones restants
 

@@ -44,7 +44,7 @@ Emystylar/
 └── .gitignore
 ```
 
-- **Version actuelle :** v0.11.0
+- **Version actuelle :** v0.12.0
 - **Date de création du projet :** 2026-07-02
 - **Dernière mise à jour de ce document :** 2026-07-07
 - **Dernier commit :** *(à renseigner après ce commit — placeholder mis à jour à chaque fin de Milestone/amélioration)*
@@ -97,6 +97,7 @@ Emystylar/
 - **Carte Google Maps interactive réelle** (page Contact, section "Localisation") : remplace l'ancienne carte illustrée placeholder. Intégration sans clé API (iframe `output=embed`, comme sur le projet Watt Security), construite depuis `config/maps.js`/`config/company.js` (préfère `maps.coordinates` dès que renseignées, sinon utilise `maps.address` déjà affiché ailleurs sur la page — aucune adresse dupliquée). Nouveau module `assets/js/modules/contact-map.js`. Responsive par ratio d'aspect croissant (4/3 mobile → 16/9 tablette → 21/9 desktop), style aligné sur `.why-us__media` (`--radius-md`/`--shadow-md`). Bouton "Ouvrir dans Google Maps" conservé à l'identique (toujours en attente du lien réel).
 - **Loader de premier chargement** (sur les 7 pages) : overlay plein écran noir profond avec un anneau doré qui se dessine (esprit fil de couture) autour du monogramme "EM" en fondu, pur CSS/SVG (aucune image, aucune bibliothèque). Affiché uniquement au tout premier chargement du site pendant la session du visiteur (`sessionStorage`, posé par un script inline dans `<head>` *avant* le premier rendu pour garantir zéro flash lors des navigations internes suivantes) ; nouveau module `assets/js/modules/loader.js`, appelé depuis `assets/js/main.js`. Respecte nativement `prefers-reduced-motion` via la règle globale déjà présente dans `reset.css` (aucun code dédié nécessaire).
 - **Page 404 personnalisée** (`404.html`) : reprend intégralement le header, le footer et le Design System du site. Grand chiffre "404", sous-titre, texte d'aide et deux boutons ("Retour à l'accueil", "Découvrir nos créations"), accompagnés d'une illustration aiguille et fil en SVG pur (aucune image). `robots: noindex, follow` (page exclue de l'indexation, comme il se doit pour une page d'erreur), sans Open Graph ni JSON-LD. Servie automatiquement par GitHub Pages / Netlify / Vercel sans configuration supplémentaire (convention `404.html` à la racine).
+- **Email officiel dans le footer** (sur les 7 pages) : `Emostyvimlarissa@gmail.com` ajouté à la colonne "Coordonnées" (entre WhatsApp et l'adresse), lien `mailto:` cliquable, réutilisant exactement le balisage déjà utilisé pour le téléphone. L'adresse était déjà centralisée dans `config/contact.js` (`email`/`emailHref`) — seule la mention "placeholder à confirmer" a été retirée, l'adresse étant désormais officiellement confirmée.
 
 ## Fonctionnalités restantes
 

@@ -16,6 +16,17 @@ Le format s'inspire de [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 - Chiffres réels pour la section "Nos réalisations en chiffres" (valeurs actuellement provisoires)
 - Déploiement
 
+## [0.12.0] — 2026-07-07
+
+### Ajouté
+
+- **Email officiel dans le footer** (sur les 7 pages) : `Emostyvimlarissa@gmail.com` ajouté à la colonne "Coordonnées" (entre WhatsApp et l'adresse), lien `mailto:` cliquable, accessible et responsive, réutilisant exactement le balisage déjà utilisé pour le téléphone (aucun nouveau composant CSS).
+
+### Modifié
+
+- `config/contact.js` : retrait de la mention "placeholder — à confirmer" sur l'email, l'adresse `email`/`emailHref` étant désormais officiellement confirmée (elle était déjà centralisée, aucun déplacement nécessaire).
+- `config/site.js` : version passée à `v0.12.0`.
+
 ## [0.11.0] — 2026-07-07
 
 ### Ajouté

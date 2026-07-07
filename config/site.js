@@ -4,7 +4,7 @@ import { company } from "./company.js";
 
 export const site = {
   projectName: `${company.name} — Site vitrine officiel`,
-  version: "v0.11.0",
+  version: "v0.12.0",
   environment: "development",
   copyrightHolder: company.name,
   year: new Date().getFullYear(),

@@ -7,7 +7,6 @@ export const contact = {
   phoneHref: "tel:+237696023673",
   whatsappNumber: "237696023673",
   whatsappBaseUrl: "https://wa.me/237696023673",
-  // Placeholder — adresse email à confirmer avec l'atelier.
   email: "Emostyvimlarissa@gmail.com",
   emailHref: "mailto:Emostyvimlarissa@gmail.com",
   // Horaires provisoires, à confirmer (voir badge "Placeholder" affiché sur le site).

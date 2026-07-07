@@ -8,12 +8,27 @@ Le format s'inspire de [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 
 ### À venir
 
-- WhatsApp + Google Maps + Formulaire (intégration réelle Google Maps et Formspree — architecture déjà en place dans `config/`)
+- Endpoint(s) Formspree réel(s) (contact et témoignages — architecture déjà en place dans `config/`)
+- Lien "Ouvrir dans Google Maps" réel (actuellement `#`, en attente de coordonnées/lien confirmés)
 - Nom de domaine réel (remplacement du placeholder `https://www.emstylar.com`)
 - Image Open Graph / Twitter Card définitive
 - Intégration du nouveau logo (`assets/img/logo/logo-primary.png`, déjà versionné) dans header/footer/favicon
 - Chiffres réels pour la section "Nos réalisations en chiffres" (valeurs actuellement provisoires)
 - Déploiement
+
+## [0.10.0] — 2026-07-07
+
+### Ajouté
+
+- **Carte Google Maps interactive réelle** (page Contact, section "Localisation") : remplace l'ancienne carte illustrée placeholder. Intégration sans clé API ni bibliothèque externe (iframe pointant vers l'endpoint public `https://www.google.com/maps?q=...&output=embed`), en réutilisant l'approche déjà éprouvée sur le projet Watt Security, adaptée à l'architecture `config/*.js` d'EMSTYLAR (au lieu d'un fichier JSON séparé).
+- Nouveau module `assets/js/modules/contact-map.js` : construit l'URL d'intégration depuis `config/maps.js`/`config/company.js` — préfère `maps.coordinates` (lat/lng) dès qu'elles seront renseignées, avec repli automatique sur `maps.address` (déjà affiché ailleurs sur la page, aucune adresse dupliquée) tant qu'elles restent à `null`. Titre d'iframe accessible généré dynamiquement, `<noscript>` de repli.
+- Aucun nouveau composant CSS structurel : la carte reprend le langage visuel de `.why-us__media` (`--radius-md`/`--shadow-md`). Seules règles ajoutées à `assets/css/pages/contact.css` : `.contact-map`, `.contact-map__frame` (ratio d'aspect responsive 4/3 mobile → 16/9 tablette ≥768px → 21/9 desktop ≥992px), `.contact-map__noscript`, `.contact-map__cta`.
+- L'ancien CSS `.map-placeholder*` (illustration de repère avec anneaux et épingle) a été retiré, n'étant plus référencé nulle part.
+
+### Modifié
+
+- Sous-titre de la section "Localisation" (page Contact) mis à jour pour refléter la carte désormais interactive.
+- `config/site.js` : version passée à `v0.10.0`.
 
 ## [0.9.0] — 2026-07-07
 

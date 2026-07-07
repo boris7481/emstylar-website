@@ -109,12 +109,20 @@
   - [x] Fichier initialement nommé par erreur `logo-primary.svg` identifié comme un PNG (signature binaire vérifiée) et renommé en `assets/img/logo/logo-primary.png` sans modification des pixels
   - [x] Ajouté au dépôt Git
   - [ ] Intégration dans le header/footer/favicon (volontairement non faite à cette étape, à la demande explicite de l'utilisateur)
+- [x] **Carte Google Maps interactive réelle**
+  - [x] Analyse de l'implémentation du projet Watt Security (iframe `output=embed`, sans clé API) et réutilisation de l'approche, adaptée à l'architecture `config/*.js` d'EMSTYLAR
+  - [x] Ancienne carte illustrée placeholder (page Contact) remplacée par une vraie carte interactive, construite depuis `config/maps.js`/`config/company.js`
+  - [x] Nouveau module `assets/js/modules/contact-map.js` : bascule automatique vers des coordonnées GPS précises dès qu'elles seront renseignées dans `config/maps.js` (fallback sur l'adresse textuelle en attendant)
+  - [x] Responsive (ratio d'aspect 4/3 mobile → 16/9 tablette → 21/9 desktop), style aligné sur le Design System existant (`--radius-md`/`--shadow-md`)
+  - [x] Coordonnées, horaires, WhatsApp, formulaire et bouton "Ouvrir dans Google Maps" laissés inchangés
+  - [x] Accessibilité (`title` descriptif sur l'iframe, `noscript` de repli, bouton clavier-focusable) et non-régression sur les 6 pages vérifiées
 
 ## Milestones restants
 
 - [ ] **WhatsApp + Google Maps + Formulaire (intégrations réelles)**
   - [x] Lien WhatsApp finalisé (numéro, message pré-rempli, centralisé dans `config/contact.js`)
-  - [ ] Intégration Google Maps réelle (actuellement carte illustrée + lien `#` piloté par `config/maps.js`)
+  - [x] Intégration Google Maps réelle (iframe sans clé API, voir Milestone "Carte Google Maps interactive réelle" ci-dessus)
+  - [ ] Lien "Ouvrir dans Google Maps" réel (actuellement `#`, en attente de coordonnées/lien confirmés)
   - [ ] Endpoint(s) Formspree réel(s) (contact et témoignages — actuellement URL placeholder dans `config/form.js`)
   - [ ] Nom de domaine réel (remplacer le placeholder `https://www.emstylar.com` partout : canonical, Open Graph, sitemap.xml, robots.txt, JSON-LD, `config/seo.js`)
   - [ ] Image Open Graph / Twitter Card définitive (actuellement un placeholder de marque, pas le visuel final)

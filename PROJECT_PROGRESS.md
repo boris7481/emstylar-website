@@ -43,7 +43,7 @@ Emystylar/
 └── .gitignore
 ```
 
-- **Version actuelle :** v0.9.0
+- **Version actuelle :** v0.10.0
 - **Date de création du projet :** 2026-07-02
 - **Dernière mise à jour de ce document :** 2026-07-07
 - **Dernier commit :** *(à renseigner après ce commit — placeholder mis à jour à chaque fin de Milestone/amélioration)*
@@ -64,7 +64,7 @@ Emystylar/
 | Videos | ✅ Terminé |
 | Contact | ✅ Terminé |
 | Intégrations & Configuration Centralisée | ✅ Terminé |
-| WhatsApp + Google Maps + Formulaire (intégrations réelles) | ⬜ Restant *(architecture prête dans `config/` ; il ne reste qu'à renseigner l'endpoint Formspree réel et la carte Google Maps réelle)* |
+| WhatsApp + Google Maps + Formulaire (intégrations réelles) | ⬜ Restant *(WhatsApp et Google Maps terminés ; il ne reste que l'endpoint Formspree réel)* |
 | SEO Professionnel & Préparation au Déploiement | ✅ Terminé |
 | Performance & Optimisation | ✅ Terminé |
 | Déploiement | ⬜ Restant |
@@ -93,10 +93,11 @@ Emystylar/
 - Section "Nos réalisations en chiffres" (page d'accueil, entre le Hero et "Nos engagements") : 4 cartes de statistiques (+400 créations, +200 clientes, 10+ années, 100% sur mesure — valeurs provisoires) avec animation de comptage progressif (0 → valeur finale) au passage dans le viewport, déclenchée une seule fois, désactivée si `prefers-reduced-motion` est actif. Nouveau module `assets/js/modules/counters.js`, aucun nouveau composant CSS structurel (réutilise `.card`, `.grid grid--2 grid--4`, `.section__header`).
 - Extension de la section "Avis de nos clientes" : les 6 témoignages restent affichés par défaut, complétés par 11 nouveaux témoignages réels (Nina, Jessica, Ornella, Stella, Daniella, Ida, Allan, Mme Solange, Mme Geneviève, Camillia, Jason) révélés via un bouton "Voir plus de témoignages". Aucun nouveau composant CSS structurel : réutilise entièrement `.testimonial-card`, `.btn--outline` et le mécanisme `[data-reveal]`/`reveal.js` déjà actif (fondu, respect de `prefers-reduced-motion`, sans animation dupliquée). Focus déplacé automatiquement vers le premier nouveau témoignage après révélation.
 - `assets/img/logo/logo-primary.png` : nouveau logo officiel EMSTYLAR (fond transparent, 665×665 px) déposé dans le dépôt. Le fichier avait été initialement nommé par erreur `logo-primary.svg` alors qu'il s'agit en réalité d'un PNG (signature binaire vérifiée) ; renommé sans aucune modification des pixels. **Non encore intégré** au header/footer/favicon — en attente d'une prochaine étape.
+- **Carte Google Maps interactive réelle** (page Contact, section "Localisation") : remplace l'ancienne carte illustrée placeholder. Intégration sans clé API (iframe `output=embed`, comme sur le projet Watt Security), construite depuis `config/maps.js`/`config/company.js` (préfère `maps.coordinates` dès que renseignées, sinon utilise `maps.address` déjà affiché ailleurs sur la page — aucune adresse dupliquée). Nouveau module `assets/js/modules/contact-map.js`. Responsive par ratio d'aspect croissant (4/3 mobile → 16/9 tablette → 21/9 desktop), style aligné sur `.why-us__media` (`--radius-md`/`--shadow-md`). Bouton "Ouvrir dans Google Maps" conservé à l'identique (toujours en attente du lien réel).
 
 ## Fonctionnalités restantes
 
-- Intégration de la carte Google Maps réelle (actuellement carte illustrée + bouton placeholder piloté par `config/maps.js`).
+- Lien "Ouvrir dans Google Maps" réel (actuellement `#`, en attente de coordonnées/lien confirmés dans `config/maps.js`).
 - Connexion réelle du formulaire de contact et du formulaire de témoignage à Formspree (actuellement URL placeholder `config/form.js` → `https://formspree.io/f/xxxxxxxx`).
 - Remplacement du domaine placeholder `https://www.emstylar.com` (canonical, Open Graph, sitemap.xml, robots.txt, JSON-LD) une fois le nom de domaine réel confirmé.
 - Remplacement de l'image Open Graph placeholder par le visuel de marque définitif.
@@ -113,7 +114,7 @@ Emystylar/
 - La page Vidéos réutilise uniquement le lecteur HTML5 natif (aucun lecteur personnalisé, aucune bibliothèque externe) ; un module JS minimal (`videos.js`) met en pause les autres lecteurs dès qu'une vidéo démarre, pour éviter que plusieurs pistes audio se superposent.
 - Les durées de vidéo sont affichées comme placeholder (`Durée : —`) dans les métadonnées de carte : le lecteur natif affiche la durée réelle une fois les métadonnées chargées.
 - La page Contact repose entièrement sur la validation HTML5 native (`required`, `type="email"`, etc.) ; `contact-form.js` ne fait qu'ajouter un retour visuel (`is-invalid`) et n'implémente aucun envoi réel tant que l'URL Formspree n'est pas définitive.
-- La localisation est présentée sous forme de carte illustrée (Yaoundé › Nkolbisson › Usine des Eaux) avec un bouton "Ouvrir dans Google Maps" en lien placeholder (`#`), en attendant l'intégration de la vraie carte.
+- La localisation utilise désormais une vraie carte Google Maps interactive (iframe `output=embed`, sans clé API — même approche que le projet Watt Security), construite depuis `config/maps.js`. Le bouton "Ouvrir dans Google Maps" reste en lien placeholder (`#`) en attendant un lien réel confirmé.
 - Les horaires d'ouverture affichés sont des placeholders explicitement marqués comme tels (badge "Placeholder" + légende du tableau) ; leur unique source est désormais `config/contact.js` (l'incohérence entre les horaires de about.html et de contact.html, qui différaient avant ce Milestone, a été corrigée à cette occasion).
 - Toutes les données de l'entreprise (téléphone, WhatsApp, email, adresse, nom, slogan, horaires, année de copyright) sont centralisées dans `config/` et synchronisées au DOM par `assets/js/modules/config-bindings.js` via des attributs `data-config-text` / `data-config-attr` / `data-whatsapp-message`. Le HTML garde toujours un texte correct par défaut (fallback statique, lisible sans JavaScript et par les robots d'indexation) ; le module se contente de le resynchroniser avec `config/` au chargement.
 - `config/seo.js` est volontairement **non** injecté dans le `<head>` par JavaScript : les balises meta/Open Graph doivent rester statiques dans le HTML pour être lisibles par les robots d'indexation et les aperçus de liens (Facebook, WhatsApp...), qui n'exécutent pas toujours le JavaScript. Les valeurs des balises `<head>` de chaque page sont donc écrites en dur, mais restent cohérentes avec `config/seo.js`, `config/company.js` et `config/contact.js` : en cas de changement, mettre à jour ces deux endroits.

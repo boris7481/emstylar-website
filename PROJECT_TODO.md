@@ -116,6 +116,18 @@
   - [x] Responsive (ratio d'aspect 4/3 mobile → 16/9 tablette → 21/9 desktop), style aligné sur le Design System existant (`--radius-md`/`--shadow-md`)
   - [x] Coordonnées, horaires, WhatsApp, formulaire et bouton "Ouvrir dans Google Maps" laissés inchangés
   - [x] Accessibilité (`title` descriptif sur l'iframe, `noscript` de repli, bouton clavier-focusable) et non-régression sur les 6 pages vérifiées
+- [x] **Loader professionnel + Page 404 premium**
+  - [x] Loader plein écran (noir profond/blanc cassé/doré) : anneau doré qui se dessine autour du monogramme "EM", pur CSS/SVG, JavaScript natif uniquement, aucune bibliothèque, aucune image supplémentaire
+  - [x] Affiché uniquement au tout premier chargement de la session (`sessionStorage`), jamais lors des navigations internes (classe `no-loader` posée par un script inline avant le premier rendu, zéro flash)
+  - [x] Durée courte, disparition en fondu, ne ralentit jamais le chargement réel (réagit à `DOMContentLoaded`, ne le bloque jamais)
+  - [x] `prefers-reduced-motion` respecté nativement via la règle globale déjà en place dans `reset.css`
+  - [x] Nouveau module `assets/js/modules/loader.js`, appelé depuis `assets/js/main.js` ; wiring ajouté sur les 7 pages (6 existantes + 404.html)
+  - [x] Page `404.html` créée : header/footer/polices/couleurs/Design System identiques au reste du site
+  - [x] Contenu conforme : grand titre "404", sous-titre "Oups... cette page est introuvable.", texte d'aide, boutons "Retour à l'accueil" et "Découvrir nos créations"
+  - [x] Illustration aiguille et fil en SVG pur (HTML/CSS/SVG uniquement, aucune image externe)
+  - [x] Composants réutilisés au maximum (`.section`, `.container`, `.btn`, `.cta-section__actions`) ; seuls les éléments réellement nouveaux ont été créés (`.error-page*`)
+  - [x] `robots: noindex, follow` (page exclue de l'indexation, liens toujours suivis), sans Open Graph ni JSON-LD
+  - [x] Responsive (desktop/tablette/mobile), accessibilité (un seul H1, navigation clavier complète, illustration décorative masquée aux lecteurs d'écran) et non-régression sur les 6 pages existantes vérifiées
 
 ## Milestones restants
 

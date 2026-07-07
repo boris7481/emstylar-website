@@ -16,6 +16,7 @@ Emystylar/
 ├── gallery.html            Galerie photos
 ├── videos.html             Galerie vidéos
 ├── contact.html            Contact
+├── 404.html                 Page d'erreur personnalisée (noindex)
 ├── config/                 Configuration centralisée (source unique de vérité)
 │   ├── site.js              Version, environnement, copyright
 │   ├── company.js            Identité (nom, slogan, ville, quartier, repère, pays)
@@ -43,7 +44,7 @@ Emystylar/
 └── .gitignore
 ```
 
-- **Version actuelle :** v0.10.0
+- **Version actuelle :** v0.11.0
 - **Date de création du projet :** 2026-07-02
 - **Dernière mise à jour de ce document :** 2026-07-07
 - **Dernier commit :** *(à renseigner après ce commit — placeholder mis à jour à chaque fin de Milestone/amélioration)*
@@ -94,6 +95,8 @@ Emystylar/
 - Extension de la section "Avis de nos clientes" : les 6 témoignages restent affichés par défaut, complétés par 11 nouveaux témoignages réels (Nina, Jessica, Ornella, Stella, Daniella, Ida, Allan, Mme Solange, Mme Geneviève, Camillia, Jason) révélés via un bouton "Voir plus de témoignages". Aucun nouveau composant CSS structurel : réutilise entièrement `.testimonial-card`, `.btn--outline` et le mécanisme `[data-reveal]`/`reveal.js` déjà actif (fondu, respect de `prefers-reduced-motion`, sans animation dupliquée). Focus déplacé automatiquement vers le premier nouveau témoignage après révélation.
 - `assets/img/logo/logo-primary.png` : nouveau logo officiel EMSTYLAR (fond transparent, 665×665 px) déposé dans le dépôt. Le fichier avait été initialement nommé par erreur `logo-primary.svg` alors qu'il s'agit en réalité d'un PNG (signature binaire vérifiée) ; renommé sans aucune modification des pixels. **Non encore intégré** au header/footer/favicon — en attente d'une prochaine étape.
 - **Carte Google Maps interactive réelle** (page Contact, section "Localisation") : remplace l'ancienne carte illustrée placeholder. Intégration sans clé API (iframe `output=embed`, comme sur le projet Watt Security), construite depuis `config/maps.js`/`config/company.js` (préfère `maps.coordinates` dès que renseignées, sinon utilise `maps.address` déjà affiché ailleurs sur la page — aucune adresse dupliquée). Nouveau module `assets/js/modules/contact-map.js`. Responsive par ratio d'aspect croissant (4/3 mobile → 16/9 tablette → 21/9 desktop), style aligné sur `.why-us__media` (`--radius-md`/`--shadow-md`). Bouton "Ouvrir dans Google Maps" conservé à l'identique (toujours en attente du lien réel).
+- **Loader de premier chargement** (sur les 7 pages) : overlay plein écran noir profond avec un anneau doré qui se dessine (esprit fil de couture) autour du monogramme "EM" en fondu, pur CSS/SVG (aucune image, aucune bibliothèque). Affiché uniquement au tout premier chargement du site pendant la session du visiteur (`sessionStorage`, posé par un script inline dans `<head>` *avant* le premier rendu pour garantir zéro flash lors des navigations internes suivantes) ; nouveau module `assets/js/modules/loader.js`, appelé depuis `assets/js/main.js`. Respecte nativement `prefers-reduced-motion` via la règle globale déjà présente dans `reset.css` (aucun code dédié nécessaire).
+- **Page 404 personnalisée** (`404.html`) : reprend intégralement le header, le footer et le Design System du site. Grand chiffre "404", sous-titre, texte d'aide et deux boutons ("Retour à l'accueil", "Découvrir nos créations"), accompagnés d'une illustration aiguille et fil en SVG pur (aucune image). `robots: noindex, follow` (page exclue de l'indexation, comme il se doit pour une page d'erreur), sans Open Graph ni JSON-LD. Servie automatiquement par GitHub Pages / Netlify / Vercel sans configuration supplémentaire (convention `404.html` à la racine).
 
 ## Fonctionnalités restantes
 
@@ -126,6 +129,9 @@ Emystylar/
 - Les témoignages affichés sont exclusivement des avis réels transmis par l'utilisateur : aucun faux témoignage n'a été inventé à aucun moment (les placeholders initiaux disaient explicitement "votre témoignage apparaîtra ici").
 - Le champ "ville" a été retiré des cartes de témoignages (information non fournie pour les vrais avis, décision explicite de l'utilisateur pour ne rien inventer) ; la règle CSS correspondante (`.testimonial-card__city`) est laissée en place mais n'est plus utilisée par aucun élément.
 - Les chiffres de la section "Nos réalisations en chiffres" sont explicitement provisoires (annoncé par l'utilisateur) ; le HTML affiche toujours la valeur finale par défaut (fallback statique sans JavaScript), le compteur ne fait que l'animer visuellement au chargement.
+- Le loader de premier chargement utilise `sessionStorage` (et non `localStorage`) : il réapparaît à chaque nouvelle session de navigation (nouvel onglet/fenêtre), mais jamais lors des navigations internes au sein d'une même visite — comportement volontaire cohérent avec "premier chargement du site", pas "une seule fois pour toujours".
+- La classe `no-loader` est posée sur `<html>` par un script inline placé *avant* tout CSS dans `<head>` (et non par le module `loader.js`, chargé en `type="module"` donc différé) : c'est la seule façon de garantir zéro flash du loader lors des navigations internes, puisque chaque page de ce site multi-pages statique est un rechargement complet du document.
+- La page `404.html` est volontairement en `robots: noindex, follow` et sans Open Graph/JSON-LD : une page d'erreur ne doit jamais être indexée ni partagée comme du contenu, mais ses liens (header/footer) doivent rester suivables par les robots.
 
 ## Notes pour les prochains développements
 

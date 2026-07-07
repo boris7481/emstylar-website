@@ -16,6 +16,21 @@ Le format s'inspire de [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 - Chiffres réels pour la section "Nos réalisations en chiffres" (valeurs actuellement provisoires)
 - Déploiement
 
+## [0.11.0] — 2026-07-07
+
+### Ajouté
+
+- **Loader de premier chargement** (sur les 7 pages) : overlay plein écran noir profond avec un anneau doré qui se dessine (esprit fil de couture) autour du monogramme "EM" en fondu — pur CSS/SVG, JavaScript natif uniquement, aucune bibliothèque externe, aucune image supplémentaire. Affiché uniquement lors du tout premier chargement de la session du visiteur (`sessionStorage`), jamais lors des navigations internes suivantes (zéro flash, grâce à un script inline posé avant le premier rendu dans `<head>`). Ne retarde jamais l'affichage du contenu réel (réagit au `DOMContentLoaded`, ne le bloque jamais) et respecte nativement `prefers-reduced-motion` via la règle globale déjà présente dans `reset.css`.
+- Nouveaux fichiers `assets/css/loader.css` et `assets/js/modules/loader.js` (fonction `initLoader()`, appelée depuis `assets/js/main.js`).
+- **Page 404 personnalisée** (`404.html`) : reprend intégralement le header, le footer, les polices, les couleurs et le Design System du site. Grand chiffre "404", sous-titre "Oups... cette page est introuvable.", texte d'aide, deux boutons ("Retour à l'accueil", "Découvrir nos créations") et une illustration aiguille et fil en SVG pur (aucune image externe). `robots: noindex, follow` (page exclue de l'indexation, liens toujours suivis par les robots), sans Open Graph ni JSON-LD (non pertinents pour une page d'erreur). Servie automatiquement par GitHub Pages / Netlify / Vercel sans configuration supplémentaire (convention `404.html` à la racine du dépôt).
+- Nouveau fichier `assets/css/pages/error.css` : réutilise `.section`, `.container`, `.btn` et `.cta-section__actions` du Design System existant ; seuls le grand chiffre, le sous-titre, le texte et l'illustration sont propres à cette page (`.error-page*`).
+
+### Modifié
+
+- `assets/js/main.js` : appel de `initLoader()` ajouté à l'initialisation commune (en premier, avant `applyConfig()`).
+- `index.html`, `about.html`, `services.html`, `gallery.html`, `videos.html`, `contact.html` : ajout du script inline anti-flash, du lien vers `loader.css` et du balisage du loader en tout premier élément du `<body>`.
+- `config/site.js` : version passée à `v0.11.0`.
+
 ## [0.10.0] — 2026-07-07
 
 ### Ajouté

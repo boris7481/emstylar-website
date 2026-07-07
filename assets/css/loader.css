@@ -1,0 +1,93 @@
+/* ==========================================================================
+   EMSTYLAR — Loader de premier chargement
+   ==========================================================================
+   Affiché uniquement lors du tout premier chargement du site (voir le
+   script inline dans <head> de chaque page, qui pose la classe .no-loader
+   sur <html> — via sessionStorage — avant même le premier rendu si le
+   site a déjà été visité pendant cette session) et masqué par
+   assets/js/modules/loader.js dès que le DOM est prêt.
+
+   Pur CSS + SVG, aucune image : un anneau doré se dessine (esprit fil de
+   couture) autour du monogramme "EM" qui apparaît en fondu. Neutralisé
+   pour prefers-reduced-motion (voir reset.css : toutes les durées
+   d'animation/transition y sont forcées à 0.01ms).
+   ========================================================================== */
+
+html.no-loader .loader {
+  display: none;
+}
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-tooltip);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-black);
+  opacity: 1;
+  transition: opacity var(--duration-slow) var(--ease-in-out);
+}
+
+.loader.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader__mark {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+}
+
+.loader__ring {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-90deg);
+}
+
+.loader__ring-track,
+.loader__ring-progress {
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.loader__ring-track {
+  stroke: rgba(248, 245, 240, 0.14);
+}
+
+.loader__ring-progress {
+  stroke: var(--color-gold);
+  stroke-linecap: round;
+  stroke-dasharray: 175;
+  stroke-dashoffset: 175;
+  animation: loader-draw var(--duration-slower) var(--ease-in-out) forwards;
+}
+
+.loader__monogram {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  color: var(--color-white);
+  opacity: 0;
+  transform: scale(0.9);
+  animation: loader-monogram-in var(--duration-slow) var(--ease-out) forwards;
+  animation-delay: 350ms;
+}
+
+@keyframes loader-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes loader-monogram-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

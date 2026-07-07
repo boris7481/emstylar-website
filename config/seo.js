@@ -6,10 +6,10 @@
 
 import { company } from "./company.js";
 
-// Placeholder — nom de domaine non encore confirmé (utilisé pour le canonical,
-// sitemap.xml, robots.txt et les URLs absolues Open Graph/Twitter en attendant
-// la confirmation du domaine réel).
-const canonicalBase = "https://www.emstylar.com";
+// Domaine canonique officiel (sans www — www.emstylar.com redirige vers cette
+// adresse). Utilisé pour le canonical, sitemap.xml, robots.txt et les URLs
+// absolues Open Graph/Twitter.
+const canonicalBase = "https://emstylar.com";
 
 // Image de partage (Open Graph / Twitter Card / JSON-LD), 1200×630.
 // Placeholder de marque en attendant le visuel définitif : il suffit de

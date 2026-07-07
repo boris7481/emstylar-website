@@ -85,15 +85,23 @@
   - [x] `netlify.toml` et `vercel.json` : préparation du cache navigateur (médias/CSS/JS longue durée, HTML toujours revalidé) — aucun backend ajouté
   - [x] Design, animations et composants non modifiés ; aucun média original modifié ou supprimé
   - [x] Tests desktop/tablette/mobile, console, régression sur les 6 pages
+- [x] **Identité visuelle & Témoignages**
+  - [x] Nouvelle image Hero (page d'accueil) optimisée (WebP + JPEG) et intégrée — layout, parallaxe, animation et overlay conservés
+  - [x] Image de partage Open Graph/Twitter (placeholder de marque 1200×630) + `og:image*`/`twitter:image*`/JSON-LD `image` sur les 6 pages, pilotés par `config/seo.js`
+  - [x] Section "Avis de nos clientes" sur la page d'accueil (avant le CTA final) : grille de 6 cartes, carte "Partager votre expérience", modale de formulaire (Nom, Ville, Email, note 1-5 étoiles, témoignage) reliée à Formspree (placeholder)
+  - [x] Nouveaux composants réutilisables `.modal` et `.star-rating` (CSS pur, accessible, sans bibliothèque)
+  - [x] 6 placeholders remplacés par de vrais témoignages clients (aucun avis inventé) ; champ "ville" retiré à la demande explicite de l'utilisateur
+  - [x] Accessibilité (piège à focus de la modale, ARIA, hiérarchie des titres) et non-régression sur les 6 pages vérifiées
 
 ## Milestones restants
 
 - [ ] **WhatsApp + Google Maps + Formulaire (intégrations réelles)**
   - [x] Lien WhatsApp finalisé (numéro, message pré-rempli, centralisé dans `config/contact.js`)
   - [ ] Intégration Google Maps réelle (actuellement carte illustrée + lien `#` piloté par `config/maps.js`)
-  - [ ] Endpoint du formulaire de contact configuré (Formspree réel — actuellement URL placeholder dans `config/form.js`)
+  - [ ] Endpoint(s) Formspree réel(s) (contact et témoignages — actuellement URL placeholder dans `config/form.js`)
   - [ ] Nom de domaine réel (remplacer le placeholder `https://www.emstylar.com` partout : canonical, Open Graph, sitemap.xml, robots.txt, JSON-LD, `config/seo.js`)
-  - [ ] Image Open Graph / Twitter Card réelle (actuellement `content="#"`)
+  - [ ] Image Open Graph / Twitter Card définitive (actuellement un placeholder de marque, pas le visuel final)
+  - [ ] Nouveau logo (`assets/img/logo/logo-primary.svg`) à intégrer dans header/footer/favicon dès réception d'une version à fond transparent
 - [ ] **Déploiement**
   - [ ] Choix de l'hébergement
   - [ ] Configuration du nom de domaine

@@ -10,8 +10,24 @@ Le format s'inspire de [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 
 - WhatsApp + Google Maps + Formulaire (intégration réelle Google Maps et Formspree — architecture déjà en place dans `config/`)
 - Nom de domaine réel (remplacement du placeholder `https://www.emstylar.com`)
-- Image Open Graph / Twitter Card réelle
+- Image Open Graph / Twitter Card définitive
+- Nouveau logo (fond transparent) à intégrer dans header/footer/favicon
 - Déploiement
+
+## [0.7.0] — 2026-07-07
+
+### Ajouté
+
+- **Nouvelle image Hero** (page d'accueil) : `assets/optimized/img/hero-home.jpg`/`.webp`, générée à partir d'un nouveau visuel fourni (source non modifiée), remplaçant l'ancienne photo — layout, parallaxe, animation Ken Burns et overlay inchangés.
+- **Image de partage Open Graph/Twitter** : `assets/optimized/img/og/og-image.jpg` (placeholder de marque 1200×630, prêt à être remplacé sans toucher au code), balises `og:image*`/`twitter:image*` complètes et champ `image` ajouté au JSON-LD `LocalBusiness` sur les 6 pages, pilotés par `config/seo.js`.
+- **Section "Avis de nos clientes"** (page d'accueil, avant le CTA final) : grille de 6 témoignages, carte "Partager votre expérience" ouvrant une modale de formulaire (Nom, Ville, Email, note 1-5 étoiles, témoignage) reliée à Formspree (URL placeholder), avec mention explicite de relecture avant publication.
+- Nouveaux composants réutilisables dans `assets/css/components.css` : `.modal` (fenêtre superposée générique) et `.star-rating` (notation par étoiles en CSS pur, accessible au clavier, sans JavaScript).
+- Nouveau module `assets/js/modules/testimonials.js` (ouverture/fermeture de la modale, piège à focus, validation HTML5).
+
+### Modifié
+
+- Les 6 témoignages placeholder de la section "Avis de nos clientes" ont été remplacés par de **vrais avis clients** (Junior M., Davila T., Georvanie N., Alex B., Hermann K., Kennedy F.) ; le champ "ville" a été retiré de chaque carte (information non disponible, aucune donnée inventée).
+- `config/site.js` : version passée à `v0.7.0`.
 
 ## [0.6.0] — 2026-07-04
 

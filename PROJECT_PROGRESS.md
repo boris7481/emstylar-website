@@ -43,10 +43,10 @@ Emystylar/
 └── .gitignore
 ```
 
-- **Version actuelle :** v0.6.0
+- **Version actuelle :** v0.7.0
 - **Date de création du projet :** 2026-07-02
-- **Dernière mise à jour de ce document :** 2026-07-04
-- **Dernier commit :** `be5a143` — feat(seo): complete professional SEO setup and deployment preparation *(placeholder — à mettre à jour à chaque fin de Milestone)*
+- **Dernière mise à jour de ce document :** 2026-07-07
+- **Dernier commit :** *(à renseigner après ce commit — placeholder mis à jour à chaque fin de Milestone/amélioration)*
 - **Hébergement prévu :** à définir *(placeholder)*
 - **Nom de domaine :** à définir *(placeholder)*
 
@@ -87,13 +87,17 @@ Emystylar/
 - Optimisation des médias : `assets/optimized/img/` (WebP + JPEG optimisé, tailles `-lg`/`-sm`, pour les 20 photos et le logo) et `assets/optimized/video/` (5 vidéos réencodées H.264/CRF avec `faststart`), utilisés par les 6 pages via `<picture>`/`<source type="image/webp">` — les originaux (`fotos/`, `logo/`, `videos/`, `assets/video/`) restent strictement intacts.
 - Lightbox de la galerie : affiche désormais l'image en pleine résolution (`-lg`) via `data-full` sur chaque vignette, pour éviter tout flou malgré l'usage de miniatures compressées (`-sm`) dans la grille.
 - Préparation cache/CDN : `netlify.toml` et `vercel.json` (cache long pour les médias/CSS/JS, revalidation systématique des pages HTML) — sans backend, ignorés sans risque par GitHub Pages.
+- Identité visuelle homepage : nouvelle image Hero (`assets/optimized/img/hero-home.jpg`/`.webp`, générée à partir d'un visuel fourni, non modifié) remplaçant l'ancienne photo de détail — même layout, parallaxe, animation Ken Burns et overlay conservés.
+- Image de partage Open Graph / Twitter Card : `assets/optimized/img/og/og-image.jpg` (placeholder de marque 1200×630, à remplacer par le visuel définitif sans toucher au code — voir `config/seo.js`), balises `og:image*`/`twitter:image*` complètes et champ `image` ajouté au JSON-LD `LocalBusiness` sur les 6 pages.
+- Section "Avis de nos clientes" (page d'accueil, juste avant le CTA final) : grille de 6 témoignages **réels** (nom + note 5 étoiles + citation, sans ville), carte "Partager votre expérience" ouvrant une modale de formulaire (Nom, Ville, Email, note 1-5 étoiles en CSS pur, témoignage) reliée à Formspree (URL placeholder), avec mention explicite que les avis sont relus avant publication. Nouveaux composants réutilisables : `.modal` (fenêtre superposée générique) et `.star-rating` (notation accessible, sans JavaScript).
 
 ## Fonctionnalités restantes
 
 - Intégration de la carte Google Maps réelle (actuellement carte illustrée + bouton placeholder piloté par `config/maps.js`).
-- Connexion réelle du formulaire à Formspree (actuellement URL placeholder `config/form.js` → `https://formspree.io/f/xxxxxxxx`).
+- Connexion réelle du formulaire de contact et du formulaire de témoignage à Formspree (actuellement URL placeholder `config/form.js` → `https://formspree.io/f/xxxxxxxx`).
 - Remplacement du domaine placeholder `https://www.emstylar.com` (canonical, Open Graph, sitemap.xml, robots.txt, JSON-LD) une fois le nom de domaine réel confirmé.
-- Image Open Graph / Twitter Card réelle (actuellement `content="#"` en placeholder) — prévue lors de l'optimisation finale des médias, à la charge de l'utilisateur.
+- Remplacement de l'image Open Graph placeholder par le visuel de marque définitif.
+- Remplacement du logo par la version définitive à fond transparent (`assets/img/logo/logo-primary.svg` déposé dans le projet mais pas encore intégré — en attente, header/footer/favicon utilisent toujours l'ancien logo).
 - Déploiement en production (hébergement + nom de domaine à définir).
 
 ## Décisions importantes prises durant le projet
@@ -115,6 +119,8 @@ Emystylar/
 - Les médias optimisés (`assets/optimized/`) sont générés une seule fois avec des outils de build locaux (Pillow pour les images, un binaire ffmpeg obtenu via `imageio-ffmpeg`) : ces outils ne sont pas des dépendances du site (aucun `package.json`, aucun runtime nécessaire pour servir le site), uniquement des utilitaires ponctuels utilisés pour produire les fichiers statiques versionnés dans le dépôt.
 - Chaque photo optimisée existe en 2 tailles (`-lg` pleine résolution pour les héros/contenus, `-sm` ~640px pour les vignettes de galerie et les posters vidéo) et 2 formats (`.webp` prioritaire via `<picture><source>`, `.jpg` en repli). Le logo est réduit à 120×120 (affiché à 44-48px, donc suffisant même en écran retina).
 - Les vidéos sont réencodées en H.264 avec un CRF ajusté par vidéo (26 par défaut, 28 pour la vidéo la plus complexe) et `-movflags +faststart`, sans changement de résolution ni de framerate : qualité visuelle vérifiée à l'identique, poids réduit de ~39 % en moyenne.
+- Les témoignages affichés sont exclusivement des avis réels transmis par l'utilisateur : aucun faux témoignage n'a été inventé à aucun moment (les placeholders initiaux disaient explicitement "votre témoignage apparaîtra ici").
+- Le champ "ville" a été retiré des cartes de témoignages (information non fournie pour les vrais avis, décision explicite de l'utilisateur pour ne rien inventer) ; la règle CSS correspondante (`.testimonial-card__city`) est laissée en place mais n'est plus utilisée par aucun élément.
 
 ## Notes pour les prochains développements
 
@@ -123,4 +129,5 @@ Emystylar/
 - Pour changer le téléphone, le WhatsApp, l'email, l'adresse, le slogan ou les horaires du site : modifier uniquement les fichiers dans `config/`, jamais le HTML directement.
 - Voir [DEVELOPMENT.md](DEVELOPMENT.md) pour le guide complet de lancement, de test et de contribution.
 - Pour régénérer les médias optimisés après une mise à jour d'une photo/vidéo source : relancer un traitement Pillow/ffmpeg équivalent à celui utilisé pour ce Milestone (aucun script réutilisable n'a été committé, volontairement, pour ne pas ajouter d'outillage de build permanent au dépôt).
+- Intégration du nouveau logo (`assets/img/logo/logo-primary.svg`) dans le header/footer/favicon : en attente d'une version à fond transparent fournie par l'utilisateur.
 - Le Milestone 12 sera le prochain chantier après validation de l'utilisateur (Déploiement, ou intégration réelle Google Maps/Formspree selon la priorité choisie).

@@ -83,6 +83,34 @@ function initFormValidation(form) {
   });
 }
 
+// EMSTYLAR — Bouton "Voir plus de témoignages"
+// Affiche les témoignages supplémentaires (déjà présents dans le HTML,
+// masqués via l'attribut natif `hidden`). Chaque carte porte aussi
+// `data-reveal` : l'apparition en fondu est donc gérée automatiquement par
+// l'observer déjà actif de reveal.js (aucune animation dupliquée ici).
+export function initShowMoreTestimonials() {
+  const button = document.getElementById("testimonials-more-btn");
+  const grid = document.querySelector(".testimonial-grid");
+  if (!button || !grid) return;
+
+  const extraCards = Array.from(grid.querySelectorAll("[data-testimonial-extra]"));
+  if (!extraCards.length) return;
+
+  button.addEventListener("click", () => {
+    extraCards.forEach((card) => {
+      card.hidden = false;
+    });
+
+    button.hidden = true;
+
+    const firstNewName = extraCards[0].querySelector(".testimonial-card__name");
+    if (firstNewName) {
+      firstNewName.setAttribute("tabindex", "-1");
+      firstNewName.focus();
+    }
+  });
+}
+
 function trapFocus(event, elements) {
   if (elements.length === 0) return;
 
@@ -98,4 +126,7 @@ function trapFocus(event, elements) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", initTestimonialModal);
+document.addEventListener("DOMContentLoaded", () => {
+  initTestimonialModal();
+  initShowMoreTestimonials();
+});

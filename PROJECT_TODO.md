@@ -98,6 +98,17 @@
   - [x] Nouveau module `assets/js/modules/counters.js` : compteur animé (0 → valeur finale, ease-out, ~1,4s), déclenché une seule fois via `IntersectionObserver`
   - [x] `prefers-reduced-motion` respecté (aucune animation, valeur finale statique conservée) ; aucune bibliothèque externe
   - [x] Responsive (4 colonnes desktop / 2×2 tablette / 1 colonne mobile), accessibilité (hiérarchie des titres, `aria-labelledby`) et non-régression sur les 6 pages vérifiées
+- [x] **Témoignages extensibles**
+  - [x] Les 6 témoignages existants restent affichés par défaut (aucun retrait)
+  - [x] 11 nouveaux témoignages réels ajoutés (Nina, Jessica, Ornella, Stella, Daniella, Ida, Allan, Mme Solange, Mme Geneviève, Camillia, Jason), masqués via l'attribut natif `hidden`
+  - [x] Bouton "Voir plus de témoignages" révélant les cartes supplémentaires en place (pas de seconde modale), en réutilisant intégralement `.testimonial-card`
+  - [x] Fondu d'apparition géré sans code supplémentaire via `[data-reveal]`/`reveal.js` déjà actif (respect natif de `prefers-reduced-motion`)
+  - [x] Accessibilité : bouton activable au clavier, focus déplacé vers le premier nouveau témoignage après révélation, aucune rupture de hiérarchie de titres
+  - [x] Responsive (desktop/tablette/mobile) et non-régression sur les 6 pages vérifiées
+- [x] **Logo officiel déposé**
+  - [x] Fichier initialement nommé par erreur `logo-primary.svg` identifié comme un PNG (signature binaire vérifiée) et renommé en `assets/img/logo/logo-primary.png` sans modification des pixels
+  - [x] Ajouté au dépôt Git
+  - [ ] Intégration dans le header/footer/favicon (volontairement non faite à cette étape, à la demande explicite de l'utilisateur)
 
 ## Milestones restants
 
@@ -107,7 +118,7 @@
   - [ ] Endpoint(s) Formspree réel(s) (contact et témoignages — actuellement URL placeholder dans `config/form.js`)
   - [ ] Nom de domaine réel (remplacer le placeholder `https://www.emstylar.com` partout : canonical, Open Graph, sitemap.xml, robots.txt, JSON-LD, `config/seo.js`)
   - [ ] Image Open Graph / Twitter Card définitive (actuellement un placeholder de marque, pas le visuel final)
-  - [ ] Nouveau logo (`assets/img/logo/logo-primary.svg`) à intégrer dans header/footer/favicon dès réception d'une version à fond transparent
+  - [ ] Nouveau logo (`assets/img/logo/logo-primary.png`, déjà versionné) à intégrer dans header/footer/favicon
   - [ ] Chiffres réels pour la section "Nos réalisations en chiffres" (actuellement des valeurs provisoires)
 - [ ] **Déploiement**
   - [ ] Choix de l'hébergement

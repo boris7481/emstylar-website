@@ -11,9 +11,22 @@ Le format s'inspire de [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 - WhatsApp + Google Maps + Formulaire (intégration réelle Google Maps et Formspree — architecture déjà en place dans `config/`)
 - Nom de domaine réel (remplacement du placeholder `https://www.emstylar.com`)
 - Image Open Graph / Twitter Card définitive
-- Nouveau logo (fond transparent) à intégrer dans header/footer/favicon
+- Intégration du nouveau logo (`assets/img/logo/logo-primary.png`, déjà versionné) dans header/footer/favicon
 - Chiffres réels pour la section "Nos réalisations en chiffres" (valeurs actuellement provisoires)
 - Déploiement
+
+## [0.9.0] — 2026-07-07
+
+### Ajouté
+
+- **Extension de la section "Avis de nos clientes"** (page d'accueil) : les 6 témoignages existants restent affichés par défaut, complétés par 11 nouveaux témoignages réels (Nina, Jessica, Ornella, Stella, Daniella, Ida, Allan, Mme Solange, Mme Geneviève, Camillia, Jason), révélés via un bouton "Voir plus de témoignages" plutôt qu'une seconde modale — choix motivé par la cohérence avec la grille existante (une modale aurait comprimé la grille multi-colonnes dans une seule colonne étroite).
+- Nouvelle fonction `initShowMoreTestimonials()` dans `assets/js/modules/testimonials.js` : révèle les cartes masquées (attribut natif `hidden`), masque le bouton et déplace le focus vers le premier nouveau témoignage pour une navigation clavier/lecteur d'écran cohérente.
+- Aucun nouveau composant CSS structurel : réutilise entièrement `.testimonial-card`, `.btn--outline`, et le mécanisme `[data-reveal]`/`reveal.js` déjà actif pour le fondu d'apparition (respect natif de `prefers-reduced-motion`, aucune animation dupliquée). Seule règle ajoutée à `assets/css/pages/home.css` : `.testimonial-more` (espacement/centrage du bouton).
+- **Logo officiel EMSTYLAR déposé** : `assets/img/logo/logo-primary.png` (665×665, fond transparent), ajouté au dépôt. Le fichier avait été initialement nommé par erreur `logo-primary.svg` (signature binaire PNG vérifiée avant renommage, aucune modification des pixels). Non encore intégré au header/footer/favicon, à la demande explicite de l'utilisateur — étape volontairement différée à un prochain Milestone.
+
+### Modifié
+
+- `config/site.js` : version passée à `v0.9.0`.
 
 ## [0.8.0] — 2026-07-07
 

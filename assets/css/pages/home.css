@@ -297,6 +297,11 @@
   line-height: var(--lh-relaxed);
 }
 
+.testimonial-more {
+  margin-top: var(--space-lg);
+  text-align: center;
+}
+
 .testimonial-share {
   max-width: var(--container-narrow);
   margin: var(--space-lg) auto 0;

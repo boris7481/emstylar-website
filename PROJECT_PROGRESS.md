@@ -43,7 +43,7 @@ Emystylar/
 └── .gitignore
 ```
 
-- **Version actuelle :** v0.8.0
+- **Version actuelle :** v0.9.0
 - **Date de création du projet :** 2026-07-02
 - **Dernière mise à jour de ce document :** 2026-07-07
 - **Dernier commit :** *(à renseigner après ce commit — placeholder mis à jour à chaque fin de Milestone/amélioration)*
@@ -91,6 +91,8 @@ Emystylar/
 - Image de partage Open Graph / Twitter Card : `assets/optimized/img/og/og-image.jpg` (placeholder de marque 1200×630, à remplacer par le visuel définitif sans toucher au code — voir `config/seo.js`), balises `og:image*`/`twitter:image*` complètes et champ `image` ajouté au JSON-LD `LocalBusiness` sur les 6 pages.
 - Section "Avis de nos clientes" (page d'accueil, juste avant le CTA final) : grille de 6 témoignages **réels** (nom + note 5 étoiles + citation, sans ville), carte "Partager votre expérience" ouvrant une modale de formulaire (Nom, Ville, Email, note 1-5 étoiles en CSS pur, témoignage) reliée à Formspree (URL placeholder), avec mention explicite que les avis sont relus avant publication. Nouveaux composants réutilisables : `.modal` (fenêtre superposée générique) et `.star-rating` (notation accessible, sans JavaScript).
 - Section "Nos réalisations en chiffres" (page d'accueil, entre le Hero et "Nos engagements") : 4 cartes de statistiques (+400 créations, +200 clientes, 10+ années, 100% sur mesure — valeurs provisoires) avec animation de comptage progressif (0 → valeur finale) au passage dans le viewport, déclenchée une seule fois, désactivée si `prefers-reduced-motion` est actif. Nouveau module `assets/js/modules/counters.js`, aucun nouveau composant CSS structurel (réutilise `.card`, `.grid grid--2 grid--4`, `.section__header`).
+- Extension de la section "Avis de nos clientes" : les 6 témoignages restent affichés par défaut, complétés par 11 nouveaux témoignages réels (Nina, Jessica, Ornella, Stella, Daniella, Ida, Allan, Mme Solange, Mme Geneviève, Camillia, Jason) révélés via un bouton "Voir plus de témoignages". Aucun nouveau composant CSS structurel : réutilise entièrement `.testimonial-card`, `.btn--outline` et le mécanisme `[data-reveal]`/`reveal.js` déjà actif (fondu, respect de `prefers-reduced-motion`, sans animation dupliquée). Focus déplacé automatiquement vers le premier nouveau témoignage après révélation.
+- `assets/img/logo/logo-primary.png` : nouveau logo officiel EMSTYLAR (fond transparent, 665×665 px) déposé dans le dépôt. Le fichier avait été initialement nommé par erreur `logo-primary.svg` alors qu'il s'agit en réalité d'un PNG (signature binaire vérifiée) ; renommé sans aucune modification des pixels. **Non encore intégré** au header/footer/favicon — en attente d'une prochaine étape.
 
 ## Fonctionnalités restantes
 
@@ -98,7 +100,7 @@ Emystylar/
 - Connexion réelle du formulaire de contact et du formulaire de témoignage à Formspree (actuellement URL placeholder `config/form.js` → `https://formspree.io/f/xxxxxxxx`).
 - Remplacement du domaine placeholder `https://www.emstylar.com` (canonical, Open Graph, sitemap.xml, robots.txt, JSON-LD) une fois le nom de domaine réel confirmé.
 - Remplacement de l'image Open Graph placeholder par le visuel de marque définitif.
-- Remplacement du logo par la version définitive à fond transparent (`assets/img/logo/logo-primary.svg` déposé dans le projet mais pas encore intégré — en attente, header/footer/favicon utilisent toujours l'ancien logo).
+- Intégration du logo définitif (`assets/img/logo/logo-primary.png`, fond transparent, déposé dans le projet et versionné) dans le header, le footer et le favicon — actuellement toujours sur l'ancien logo.
 - Déploiement en production (hébergement + nom de domaine à définir).
 
 ## Décisions importantes prises durant le projet
@@ -131,6 +133,6 @@ Emystylar/
 - Pour changer le téléphone, le WhatsApp, l'email, l'adresse, le slogan ou les horaires du site : modifier uniquement les fichiers dans `config/`, jamais le HTML directement.
 - Voir [DEVELOPMENT.md](DEVELOPMENT.md) pour le guide complet de lancement, de test et de contribution.
 - Pour régénérer les médias optimisés après une mise à jour d'une photo/vidéo source : relancer un traitement Pillow/ffmpeg équivalent à celui utilisé pour ce Milestone (aucun script réutilisable n'a été committé, volontairement, pour ne pas ajouter d'outillage de build permanent au dépôt).
-- Intégration du nouveau logo (`assets/img/logo/logo-primary.svg`) dans le header/footer/favicon : en attente d'une version à fond transparent fournie par l'utilisateur.
+- Intégration du nouveau logo (`assets/img/logo/logo-primary.png`, fond transparent, déjà versionné) dans le header/footer/favicon : reste à faire au prochain Milestone.
 - Les valeurs de "Nos réalisations en chiffres" sont à remplacer par les chiffres réels dès qu'ils seront confirmés (il suffit de modifier les attributs `data-count-to`/`data-count-prefix`/`data-count-suffix` et le texte affiché dans `index.html`, aucun changement de code nécessaire).
 - Le Milestone 12 sera le prochain chantier après validation de l'utilisateur (Déploiement, ou intégration réelle Google Maps/Formspree selon la priorité choisie).

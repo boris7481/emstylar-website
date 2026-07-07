@@ -6,6 +6,18 @@
 
 import { company } from "./company.js";
 
+// Placeholder — nom de domaine non encore confirmé (utilisé pour le canonical,
+// sitemap.xml, robots.txt et les URLs absolues Open Graph/Twitter en attendant
+// la confirmation du domaine réel).
+const canonicalBase = "https://www.emstylar.com";
+
+// Image de partage (Open Graph / Twitter Card / JSON-LD), 1200×630.
+// Placeholder de marque en attendant le visuel définitif : il suffit de
+// remplacer ce fichier (même nom, mêmes dimensions) pour que le site utilise
+// automatiquement la nouvelle image, sans toucher au code.
+const ogImagePath = "assets/optimized/img/og/og-image.jpg";
+const ogImageUrl = `${canonicalBase}/${ogImagePath}`;
+
 export const seo = {
   siteName: `${company.name} — ${company.slogan}`,
   description:
@@ -21,21 +33,24 @@ export const seo = {
     "formation couture",
     "Nkolbisson",
   ],
+  canonicalBase,
   openGraph: {
     type: "website",
     siteName: company.name,
     locale: "fr_FR",
-    // Placeholder — image Open Graph à définir lors du Milestone Optimisation des médias.
-    image: "#",
+    image: ogImageUrl,
+    imageWidth: 1200,
+    imageHeight: 630,
+    imageType: "image/jpeg",
+    imageAlt: `${company.name} — ${company.slogan}`,
   },
   twitter: {
     card: "summary_large_image",
     // Placeholder — compte Twitter/X à confirmer.
     site: "#",
+    image: ogImageUrl,
+    imageAlt: `${company.name} — ${company.slogan}`,
   },
-  // Placeholder — nom de domaine non encore confirmé (utilisé pour le canonical,
-  // sitemap.xml et robots.txt en attendant la confirmation du domaine réel).
-  canonicalBase: "https://www.emstylar.com",
 };
 
 export default seo;

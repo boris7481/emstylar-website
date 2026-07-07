@@ -844,3 +844,131 @@
   font-size: var(--fs-sm);
   line-height: var(--lh-relaxed);
 }
+
+/* --------------------------------------------------------------------
+   20. Modale (fenêtre superposée générique)
+   Réutilisable pour tout contenu nécessitant une fenêtre modale (ex.
+   formulaire de témoignage). Ouverture/fermeture pilotées par un module
+   JS dédié à la page qui l'utilise ; piège à focus inclus côté JS.
+   -------------------------------------------------------------------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+}
+
+.modal[hidden] {
+  display: none;
+}
+
+/* Verrouille le scroll de la page pendant qu'une modale est ouverte */
+.has-modal-open {
+  overflow: hidden;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(10, 10, 10, 0.72);
+}
+
+.modal__panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: var(--space-lg);
+  background-color: var(--color-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  animation: zoom-in var(--duration-slow) var(--ease-out);
+}
+
+.modal__close {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: var(--fs-xl);
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.modal__close:hover {
+  background-color: var(--gray-100);
+  color: var(--color-text);
+}
+
+.modal__title {
+  padding-right: var(--space-xl);
+  margin-bottom: var(--space-2xs);
+}
+
+.modal__intro {
+  margin-bottom: var(--space-md);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+/* --------------------------------------------------------------------
+   21. Notation par étoiles (formulaire)
+   5 boutons radio natifs (valeurs 5→1 dans le DOM, affichage inversé en
+   CSS) : la sélection au survol/choix éclaire les étoiles jusqu'à celle
+   ciblée grâce au sélecteur ~, sans JavaScript.
+   -------------------------------------------------------------------- */
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: var(--space-3xs);
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.star-rating__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.star-rating__label {
+  font-size: var(--fs-2xl);
+  line-height: 1;
+  color: var(--color-border-strong);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.star-rating__label:hover,
+.star-rating__label:hover ~ .star-rating__label,
+.star-rating__input:checked ~ .star-rating__label {
+  color: var(--color-gold);
+}
+
+.star-rating__input:focus-visible ~ .star-rating__label {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.star-rating.is-invalid .star-rating__label {
+  color: var(--color-error-border);
+}

@@ -218,5 +218,89 @@
   }
 }
 
+/* --------------------------------------------------------------------
+   Avis de nos clientes — grille de témoignages + carte "partager"
+   -------------------------------------------------------------------- */
+.testimonial-grid {
+  list-style: none;
+}
+
+.testimonial-card {
+  height: 100%;
+  gap: var(--space-sm);
+}
+
+.testimonial-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.testimonial-card__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-full);
+  background-color: rgba(201, 162, 75, 0.12);
+  color: var(--color-gold-ink);
+}
+
+.testimonial-card__avatar svg {
+  width: 26px;
+  height: 26px;
+}
+
+.testimonial-card__name {
+  font-family: var(--font-heading);
+  font-size: var(--fs-md);
+}
+
+.testimonial-card__city {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.testimonial-card__stars {
+  color: var(--color-gold);
+  letter-spacing: 0.15em;
+}
+
+.testimonial-card__text {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  font-style: italic;
+  line-height: var(--lh-relaxed);
+}
+
+.testimonial-share {
+  max-width: var(--container-narrow);
+  margin: var(--space-lg) auto 0;
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.testimonial-share__title {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-2xs);
+}
+
+.testimonial-share__text {
+  max-width: 46ch;
+  margin: 0 auto var(--space-md);
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------
+   Formulaire de témoignage (dans .modal, voir assets/css/components.css)
+   -------------------------------------------------------------------- */
+.testimonial-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
 /* Section d'appel à l'action (CTA) : voir assets/css/components.css
    (.cta-section*), composant partagé par toutes les pages. */
